@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no,address=no,email=no">
+<title>KODA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" /><style>.ms{font-family:"Material Symbols Rounded";font-weight:normal;font-style:normal;font-size:20px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;-webkit-font-feature-settings:"liga";font-feature-settings:"liga";-webkit-font-smoothing:antialiased;vertical-align:middle;}</style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+:root{--mx:340px;}
+
+/* ══ BASE THEMES ══ */
+body.t-dark   {--bg:#0d0d0d;--bg2:#161616;--ink:#efefef;--ink2:#aaaaaa;--ink3:#555555;--btn:#efefef;--bt:#0d0d0d;--bdr:rgba(255,255,255,.12);--sh:rgba(0,0,0,.7);--ln:rgba(255,255,255,.05);--gr:#22cc66;--gbg:#0a2018;--ye:#ddaa22;--ybg:#1a1200;--re:#dd4444;--rbg:#1a0808;}
+body.t-mono   {--bg:#ffffff;--bg2:#f0f0f0;--ink:#000000;--ink2:#333333;--ink3:#888888;--btn:#000000;--bt:#ffffff;--bdr:rgba(0,0,0,.15);--sh:rgba(0,0,0,.1);--ln:rgba(0,0,0,.06);--gr:#1a7a1a;--gbg:#d4f0d4;--ye:#7a5800;--ybg:#fff3cc;--re:#cc0000;--rbg:#ffd4d4;}
+body.t-galaxy {--bg:#000000;--bg2:#080005;--ink:#ffe8d0;--ink2:#cc8844;--ink3:#7a4422;--btn:#ff6600;--bt:#fff8f0;--bdr:rgba(255,120,0,.22);--sh:rgba(0,0,0,.98);--ln:rgba(255,80,0,.025);--gr:#00e676;--gbg:#003318;--ye:#ffd740;--ybg:#2a1800;--re:#ff5252;--rbg:#2a0000;}
+
+/* ══ NEW THEMES ══ */
+body.t-sunset  {--bg:#0f0500;--bg2:#1a0800;--ink:#ffe8cc;--ink2:#ff9944;--ink3:#994422;--btn:#ff6622;--bt:#0f0500;--bdr:rgba(255,100,30,.2);--sh:rgba(0,0,0,.9);--ln:rgba(255,100,30,.04);--gr:#ffaa22;--gbg:#1a0e00;--ye:#ffdd44;--ybg:#150c00;--re:#ff3311;--rbg:#140300;}
+body.t-amoled  {--bg:#000000;--bg2:#000000;--ink:#ffffff;--ink2:#999999;--ink3:#444444;--btn:#ffffff;--bt:#000000;--bdr:rgba(255,255,255,.1);--sh:rgba(0,0,0,1);--ln:rgba(255,255,255,.03);--gr:#00ff88;--gbg:#002a18;--ye:#ffcc00;--ybg:#111100;--re:#ff3333;--rbg:#110000;}
+body.t-mint    {--bg:#f0faf5;--bg2:#e0f5eb;--ink:#0d3322;--ink2:#2a7755;--ink3:#6aaa88;--btn:#1a8855;--bt:#f0faf5;--bdr:rgba(26,136,85,.18);--sh:rgba(0,60,30,.1);--ln:rgba(26,136,85,.07);--gr:#0f7a3a;--gbg:#c8eeda;--ye:#886600;--ybg:#fff0cc;--re:#cc2222;--rbg:#ffd4d4;}
+body.t-rose    {--bg:#1a0810;--bg2:#250c18;--ink:#ffe8f0;--ink2:#ff88aa;--ink3:#cc5577;--btn:#ff5588;--bt:#1a0810;--bdr:rgba(255,85,136,.2);--sh:rgba(0,0,0,.9);--ln:rgba(255,85,136,.04);--gr:#ff88bb;--gbg:#2a0018;--ye:#ffcc88;--ybg:#1a0e00;--re:#aa0033;--rbg:#1a0008;}
+body.t-ocean   {--bg:#020c16;--bg2:#041828;--ink:#cceeff;--ink2:#5599cc;--ink3:#224466;--btn:#2277bb;--bt:#020c16;--bdr:rgba(34,119,187,.2);--sh:rgba(0,0,0,.95);--ln:rgba(34,119,187,.04);--gr:#00ddaa;--gbg:#002a20;--ye:#88ddff;--ybg:#001020;--re:#ff4455;--rbg:#140008;}
+body.t-lavender{--bg:#f5f0ff;--bg2:#ece5ff;--ink:#2a1560;--ink2:#6644aa;--ink3:#9977cc;--btn:#5533aa;--bt:#f5f0ff;--bdr:rgba(85,51,170,.15);--sh:rgba(40,10,100,.1);--ln:rgba(85,51,170,.06);--gr:#2255aa;--gbg:#dde8ff;--ye:#aa6600;--ybg:#fff3dd;--re:#cc0055;--rbg:#ffddee;}
+body.t-amber   {--bg:#0a0600;--bg2:#140c00;--ink:#fff0cc;--ink2:#ffaa22;--ink3:#aa6600;--btn:#dd8800;--bt:#0a0600;--bdr:rgba(221,136,0,.2);--sh:rgba(0,0,0,.95);--ln:rgba(221,136,0,.04);--gr:#88cc00;--gbg:#0a1400;--ye:#ffcc00;--ybg:#1a1000;--re:#cc3300;--rbg:#140400;}
+body.t-crimson {--bg:#0a0000;--bg2:#150000;--ink:#ffdddd;--ink2:#ff7777;--ink3:#aa3333;--btn:#cc2222;--bt:#0a0000;--bdr:rgba(204,34,34,.2);--sh:rgba(0,0,0,.95);--ln:rgba(204,34,34,.04);--gr:#ff6666;--gbg:#200000;--ye:#ff9944;--ybg:#150800;--re:#ff2222;--rbg:#1a0000;}
+body.t-slate   {--bg:#0e1117;--bg2:#161c25;--ink:#dde4f0;--ink2:#8899bb;--ink3:#445566;--btn:#5577aa;--bt:#0e1117;--bdr:rgba(85,119,170,.18);--sh:rgba(0,0,0,.85);--ln:rgba(85,119,170,.05);--gr:#44bb88;--gbg:#0a1e14;--ye:#ddbb44;--ybg:#141000;--re:#cc4444;--rbg:#140808;}
+body.t-lime    {--bg:#060a02;--bg2:#0c1404;--ink:#ddffcc;--ink2:#88cc44;--ink3:#446622;--btn:#66aa22;--bt:#060a02;--bdr:rgba(102,170,34,.18);--sh:rgba(0,0,0,.9);--ln:rgba(102,170,34,.04);--gr:#44ff22;--gbg:#0a1e04;--ye:#aacc00;--ybg:#101400;--re:#ff4422;--rbg:#140400;}
+
+/* ══ BODY ══ */
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans Arabic',sans-serif;min-height:100vh;overflow:hidden;position:relative;}
+.page{display:none;position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.page.on{display:flex;flex-direction:column;align-items:center;}
+
+/* ══ CANVAS (galaxy + space only) ══ */
+#space-canvas{display:none;position:fixed;inset:0;z-index:0;pointer-events:none;}
+body.t-galaxy #space-canvas,
+body.t-space  #space-canvas{display:block;}
+
+/* ══ SUNSET GRADIENT BACKGROUND ══ */
+body.t-sunset::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 50% 85%,rgba(255,80,0,.22) 0%,rgba(180,40,0,.12) 40%,transparent 70%);pointer-events:none;z-index:0;}
+/* ══ GALAXY VIDEO ══ */
+#bh-video{display:none;position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;z-index:0;pointer-events:none;opacity:0;transition:opacity 2.5s ease;filter:brightness(0.7) contrast(1.22) saturate(1.3);}
+/* OFFLINE TOAST */
+#offline-toast{display:none;position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(20,10,0,.95);color:#ffcc88;border:1px solid rgba(255,150,40,.35);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;z-index:9999;text-align:center;max-width:300px;box-shadow:0 4px 20px rgba(0,0,0,.6);}
+
+/* ══ PAGES ══ */
+#pg-login.on,#pg-register.on{justify-content:center;padding:24px 20px;}
+#pg-menu.on{justify-content:center;padding:20px 16px 30px;}
+#pg-game.on{align-items:center;justify-content:center;padding:16px 12px 24px;}
+#pg-settings.on{padding:0;}
+
+/* ══ AUTH ══ */
+.auth-wrap{width:100%;max-width:var(--mx);display:flex;flex-direction:column;align-items:center;gap:18px;position:relative;z-index:1;}
+.auth-logo{font-size:48px;font-weight:900;letter-spacing:6px;color:var(--ink);}
+.auth-sub{font-size:12px;color:var(--ink3);font-weight:600;letter-spacing:1px;}
+.inp-wrap{width:100%;display:flex;flex-direction:column;gap:10px;}
+.inp-label{font-size:11px;font-weight:800;color:var(--ink3);letter-spacing:1px;}
+.inp{width:100%;background:var(--bg2);border:1.5px solid var(--bdr);border-radius:12px;padding:13px 14px;font-size:15px;color:var(--ink);outline:none;font-family:inherit;}
+.inp:focus{border-color:var(--ink2);}
+.abtn{width:100%;background:var(--btn);color:var(--bt);border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;}
+.abtn.out{background:transparent;color:var(--ink2);border:1.5px solid var(--bdr);}
+
+/* ══ MENU ══ */
+#pg-menu{position:fixed;inset:0;}
+.menu-wrap{width:100%;max-width:var(--mx);display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;z-index:1;}
+.menu-logo{font-size:52px;font-weight:900;letter-spacing:7px;color:var(--ink);}
+.menu-sub{font-size:13px;color:var(--ink3);font-weight:600;letter-spacing:1px;margin-top:-8px;}
+.menu-user{font-size:13px;color:var(--ink2);font-weight:700;}
+.mbtn{width:100%;background:var(--btn);color:var(--bt);border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:9px;}
+.mbtn.out{background:rgba(128,128,128,.08);color:var(--ink2);border:1.5px solid var(--bdr);}
+
+/* ══ SETTINGS ══ */
+.swrap{width:100%;max-width:var(--mx);padding:16px 14px 30px;display:flex;flex-direction:column;gap:10px;margin:0 auto;position:relative;z-index:1;}
+.stitle{font-size:22px;font-weight:900;color:var(--ink);padding:4px 0 8px;}
+.sback{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink2);cursor:pointer;padding:4px 0 8px;}
+.ssec{background:var(--bg2);border:1.5px solid var(--bdr);border-radius:14px;overflow:hidden;margin-bottom:2px;}
+.srow{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid var(--bdr);}
+.srow:last-child{border-bottom:none;}
+.srow.tap{cursor:pointer;}
+.srow-left{display:flex;align-items:center;gap:10px;}
+.slbl{font-size:14px;font-weight:700;color:var(--ink);}
+.ssub{font-size:12px;color:var(--ink3);margin-top:2px;}
+.abt-body{font-size:13px;color:var(--ink2);line-height:1.85;padding:13px 14px;white-space:pre-wrap;}
+
+/* ══ THEME GRID ══ */
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:10px;width:100%;}
+.tdot{border-radius:9px;border:2px solid var(--bdr);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:7px 3px;font-size:9px;font-weight:700;transition:border-color .15s;line-height:1.3;}
+.tdot.on{border-color:var(--ink);border-width:3px;}
+
+/* ══ TOGGLE ══ */
+.tog{width:46px;height:26px;border-radius:13px;border:none;background:rgba(128,128,128,.25);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;}
+.tog::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s;}
+.tog.on{background:var(--btn);}
+.tog.on::after{left:23px;}
+
+/* ══ GAME PAGE ══ */
+#game-logo{font-size:32px;font-weight:900;letter-spacing:5px;color:var(--ink);position:relative;z-index:1;}
+#game-sub{font-size:11px;color:var(--ink3);font-weight:600;letter-spacing:1px;margin-bottom:4px;position:relative;z-index:1;}
+#lvlbar{background:var(--btn);color:var(--bt);border-radius:10px;padding:8px 16px;width:100%;max-width:var(--mx);display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:13px;margin-bottom:10px;position:relative;z-index:1;}
+#grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;width:100%;max-width:var(--mx);position:relative;z-index:1;}
+.cell{aspect-ratio:1;border-radius:10px;border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:var(--ink);background:var(--bg2);transition:border-color .15s,background .15s;}
+.cell.active{border-color:var(--ink2);}
+.cell.correct{background:var(--gbg);border-color:var(--gr);color:var(--gr);}
+.cell.present{background:var(--ybg);border-color:var(--ye);color:var(--ye);}
+.cell.absent {background:var(--rbg);border-color:var(--re);color:var(--re);}
+#hint{font-size:11px;color:var(--ink3);font-weight:600;margin:6px 0;text-align:center;position:relative;z-index:1;}
+#sbtn{width:100%;max-width:var(--mx);background:var(--btn);color:var(--bt);border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;z-index:1;}
+#legend{display:flex;gap:12px;margin-top:8px;position:relative;z-index:1;}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink3);font-weight:700;}
+.legdot{width:14px;height:14px;border-radius:4px;}
+
+/* ══ OVERLAY ══ */
+#ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;align-items:center;justify-content:center;padding:20px;}
+#ov.on{display:flex;}
+#ovbox{background:var(--bg);border:1.5px solid var(--bdr);border-radius:18px;padding:28px 22px;width:100%;max-width:300px;text-align:center;box-shadow:0 10px 40px var(--sh);}
+#ovicon{font-size:44px;margin-bottom:10px;}
+#ovtitle{font-size:20px;font-weight:900;color:var(--ink);margin-bottom:6px;}
+#ovmsg{font-size:13px;color:var(--ink2);margin-bottom:18px;line-height:1.7;white-space:pre-line;}
+#ovbtn{width:100%;background:var(--btn);color:var(--bt);border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;}
+
+/* ══ CONFIRM DIALOG ══ */
+#cfm{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center;padding:20px;}
+#cfm.on{display:flex;}
+#cfmbox{background:var(--bg);border:1.5px solid var(--bdr);border-radius:18px;padding:24px 20px;width:100%;max-width:290px;text-align:center;}
+#cfmtitle{font-size:17px;font-weight:900;color:var(--ink);margin-bottom:8px;}
+#cfmmsg{font-size:13px;color:var(--ink2);margin-bottom:18px;line-height:1.65;}
+.cfmbtns{display:flex;gap:10px;}
+#cfmyes,#cfmno{flex:1;padding:12px;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;}
+#cfmno{background:var(--bg2);color:var(--ink2);border:1.5px solid var(--bdr);}
+
+/* ══ LANGUAGE MODAL ══ */
+#lmod{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:150;align-items:flex-end;justify-content:center;}
+#lmod.on{display:flex;}
+#lbox{background:var(--bg);border-radius:20px 20px 0 0;padding:18px 14px 30px;width:100%;max-width:var(--mx);max-height:70vh;overflow-y:auto;}
+#lmod-title{font-size:16px;font-weight:900;color:var(--ink);margin-bottom:12px;text-align:center;}
+.lang-item{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:700;color:var(--ink2);}
+.lang-item:hover{background:var(--bg2);}
+.lang-item.active{color:var(--btn);}
+
+/* ══ MENU BUTTON (hamburger) ══ */
+#mb{display:none;position:fixed;top:12px;right:12px;z-index:50;background:var(--bg2);border:1.5px solid var(--bdr);border-radius:50%;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px var(--sh);}
+#mb.on{display:flex;}
+
+/* ══ TOAST ══ */
+#toast{display:none;position:fixed;top:64px;left:50%;transform:translateX(-50%);background:var(--btn);color:var(--bt);border-radius:10px;padding:8px 18px;font-size:13px;font-weight:800;white-space:nowrap;z-index:999;}
+
+/* ══ HIDDEN INPUT ══ */
+#hi{position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;border:none;outline:none;font-size:1px;pointer-events:none;}
+
+/* ══ MUSIC SECTION ══ */
+#music-sec{display:none;}
+</style>
+</head>
+<body class="t-warm">
+
+<!-- SPACE CANVAS -->
+<canvas id="space-canvas"></canvas>
+
+<!-- GALAXY VIDEO (NASA SVS black hole simulation) -->
+<video id="bh-video" muted playsinline loop preload="none"
+  style="display:none;position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;z-index:0;pointer-events:none;opacity:0;transition:opacity 2.5s ease;filter:brightness(0.7) contrast(1.22) saturate(1.3);">
+  <!-- SVS 14576: Closest approach — camera dives toward BH, most cinematic -->
+  <source src="https://svs.gsfc.nasa.gov/vis/a010000/a014500/a014576/14576_BHPlunge_1080.mp4" type="video/mp4">
+  <!-- SVS 14793: Interstellar-style — disk wraps over/under -->
+  <source src="https://svs.gsfc.nasa.gov/vis/a010000/a014700/a014793/Spinning_Black_Hole_1080.mp4" type="video/mp4">
+  <!-- SVS 14619: Einstein Ring — clean fallback -->
+  <source src="https://svs.gsfc.nasa.gov/vis/a010000/a014600/a014619/BlackHole_v2_LOGO_1080.mp4" type="video/mp4">
+  <!-- SVS 13326: 360 loop last resort -->
+  <source src="https://svs.gsfc.nasa.gov/vis/a010000/a013300/a013326/BH_Accretion_Disk_Sim_360_1080.mp4" type="video/mp4">
+</video>
+
+<!-- BH Audio generated by Web Audio API -->
+
+
+
+
+
+
+
+
+
+<!-- OFFLINE TOAST -->
+<div id="offline-toast" style="display:none;position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(20,10,0,.95);color:#ffcc88;border:1px solid rgba(255,150,40,.35);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;z-index:9999;text-align:center;max-width:300px;box-shadow:0 4px 20px rgba(0,0,0,.6);">
+  <span class="ms" style="font-size:16px;vertical-align:middle;margin-inline-end:6px;">wifi_off</span>الخلفية المتحركة تحتاج إنترنت
+</div>
+
+
+
+<!-- FLOATING MENU BTN (outside pages) -->
+<button id="gmenubtn" onclick="goMenu()"><span class="ms">menu</span></button>
+
+<!-- LOGIN -->
+<div id="pg-login" class="page on">
+  <div class="card">
+    <div class="logo">KODA</div>
+    <div class="sub" id="sub-login">KODA</div>
+    <div class="aerr" id="login-err"></div>
+    <label class="lbl"><span class="ms">person</span><span id="lbl-user">USERNAME</span></label>
+    <input class="inp" id="inp-user" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="20">
+    <label class="lbl"><span class="ms">lock</span><span id="lbl-pass">PASSWORD</span></label>
+    <input class="inp" id="inp-pass" type="password" maxlength="30">
+    <button class="abtn" onclick="doLogin()"><span class="ms">login</span><span id="lbl-loginbtn">Login</span></button>
+    <button class="abtn out" onclick="showPage('pg-register')"><span class="ms">person_add</span><span id="lbl-regbtn">Create Account</span></button>
+  </div>
+</div>
+
+<!-- REGISTER -->
+<div id="pg-register" class="page">
+  <div class="card">
+    <div class="logo">KODA</div>
+    <div class="sub">Create Account</div>
+    <div class="aerr" id="reg-err"></div>
+    <label class="lbl"><span class="ms">person</span> USERNAME</label>
+    <input class="inp" id="reg-user" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="20">
+    <label class="lbl"><span class="ms">lock</span> PASSWORD</label>
+    <input class="inp" id="reg-pass" type="password" maxlength="30">
+    <label class="lbl"><span class="ms">lock</span> CONFIRM</label>
+    <input class="inp" id="reg-pass2" type="password" maxlength="30">
+    <button class="abtn" onclick="doRegister()"><span class="ms">check</span> Register</button>
+    <button class="abtn out" onclick="showPage('pg-login')"><span class="ms">arrow_back</span> Back</button>
+  </div>
+</div>
+
+<!-- MENU -->
+<div id="pg-menu" class="page">
+  <div class="mwrap">
+    <div class="mlogo">KODA</div>
+    <div class="msub" id="menu-sub">KODA</div>
+    <div class="muser" id="menu-user"></div>
+    <button class="mbtn" onclick="goGame()"><span class="ms">play_arrow</span><span id="lbl-play">Play</span></button>
+    <button class="mbtn out" onclick="openLang()"><span class="ms">language</span><span id="lbl-lang">Language</span></button>
+    <button class="mbtn out" onclick="showPage('pg-settings')"><span class="ms">settings</span><span id="lbl-settings">Settings</span></button>
+    <button class="mbtn out" onclick="confirmExit()"><span class="ms">arrow_back</span><span id="lbl-exit">Exit</span></button>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div id="pg-settings" class="page">
+  <div class="swrap">
+    <div class="sback" onclick="showPage('pg-menu')"><span class="ms">arrow_back</span><span id="lbl-back">Back</span></div>
+    <div class="stitle" id="lbl-stitle">Settings</div>
+    <div class="ssec">
+      <div class="srow">
+        <div class="srow-left"><span class="ms">volume_up</span><div><div class="slbl" id="lbl-sfx">Sound Effects</div><div class="ssub" id="lbl-sfxsub">Game sounds</div></div></div>
+        <button class="tog on" id="tog-sfx" onclick="toggleSFX()"></button>
+      </div>
+    </div>
+    <div class="ssec">
+      <div class="srow" style="flex-direction:column;align-items:flex-start;gap:10px;border-bottom:none;">
+        <div class="srow-left"><span class="ms">palette</span><div class="slbl" id="lbl-theme">Theme</div></div>
+        <div class="tgrid" style="width:100%;padding:0;">
+          <div class="tdot on" data-t="t-dark"    style="background:#0d0d0d;color:#eee;"    onclick="setTh(this)"><span class="ms" style="font-size:16px">dark_mode</span>Dark</div>
+          <div class="tdot"    data-t="t-mono"    style="background:#fff;color:#000;"       onclick="setTh(this)"><span class="ms" style="font-size:16px">crop_square</span>Mono</div>
+          <div class="tdot"    data-t="t-sunset"  style="background:#1a0800;color:#ff9944;" onclick="setTh(this)"><span class="ms" style="font-size:16px">wb_sunny</span>Sunset</div>
+          <div class="tdot"    data-t="t-amoled"  style="background:#000;color:#fff;"       onclick="setTh(this)"><span class="ms" style="font-size:16px">brightness_1</span>Amoled</div>
+          <div class="tdot"    data-t="t-mint"    style="background:#e0f5eb;color:#1a8855;" onclick="setTh(this)"><span class="ms" style="font-size:16px">eco</span>Mint</div>
+          <div class="tdot"    data-t="t-rose"    style="background:#250c18;color:#ff88aa;" onclick="setTh(this)"><span class="ms" style="font-size:16px">favorite</span>Rose</div>
+          <div class="tdot"    data-t="t-ocean"   style="background:#041828;color:#5599cc;" onclick="setTh(this)"><span class="ms" style="font-size:16px">water</span>Ocean</div>
+          <div class="tdot"    data-t="t-lavender"style="background:#ece5ff;color:#5533aa;" onclick="setTh(this)"><span class="ms" style="font-size:16px">spa</span>Lavender</div>
+          <div class="tdot"    data-t="t-amber"   style="background:#140c00;color:#ffaa22;" onclick="setTh(this)"><span class="ms" style="font-size:16px">local_cafe</span>Amber</div>
+          <div class="tdot"    data-t="t-crimson" style="background:#150000;color:#ff7777;" onclick="setTh(this)"><span class="ms" style="font-size:16px">whatshot</span>Crimson</div>
+          <div class="tdot"    data-t="t-slate"   style="background:#161c25;color:#dde4f0;" onclick="setTh(this)"><span class="ms" style="font-size:16px">layers</span>Slate</div>
+          <div class="tdot"    data-t="t-lime"    style="background:#0c1404;color:#88cc44;" onclick="setTh(this)"><span class="ms" style="font-size:16px">energy_savings_leaf</span>Lime</div>
+          <div class="tdot"    data-t="t-galaxy"  style="background:#050210;color:#f0eaff;" onclick="setTh(this)"><span class="ms" style="font-size:16px">lens_blur</span>Galaxy</div>
+        </div>    <!-- THEME MUSIC SECTION — shown for galaxy/solar/aurora -->
+    <div class="ssec" id="music-sec" style="display:none;">
+      <div class="srow">
+        <div class="srow-left">
+          <span class="ms" style="color:var(--btn);">graphic_eq</span>
+          <div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div class="slbl" id="lbl-music">Background Sound</div>
+              <span class="ms" id="music-info-btn" onclick="toggleMusicInfo()"
+                style="font-size:15px;color:var(--ink3);cursor:pointer;padding:2px;">info</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:5px;margin-top:2px;">
+              <span class="ms" style="font-size:13px;color:#00c853;">check_circle</span>
+              <div class="ssub" id="lbl-musicsub" style="color:#00c853;font-weight:700;">Cosmic tones — Halal</div>
+            </div>
+          </div>
+        </div>
+        <button class="tog" id="tog-music" onclick="toggleMusic()"></button>
+      </div>
+      <div class="srow" id="volume-row" style="display:none;padding-top:8px;padding-bottom:12px;">
+        <div class="srow-left" style="width:100%;gap:10px;">
+          <span class="ms" style="font-size:18px;flex-shrink:0;">volume_down</span>
+          <input type="range" id="volume-slider" min="0" max="100" value="40"
+            oninput="setMusicVol(this.value)"
+            style="flex:1;height:4px;accent-color:var(--btn);cursor:pointer;">
+          <span class="ms" style="font-size:18px;flex-shrink:0;">volume_up</span>
+        </div>
+      </div>
+      <!-- Music info panel -->
+      <div id="music-info-panel" style="display:none;padding:13px 14px;border-top:1px solid var(--bdr);">
+        <div style="font-size:12px;color:var(--ink2);line-height:1.9;" id="music-info-body">
+          <!-- filled by applyLang -->
+        </div>
+      </div>
+    </div>
+
+    <div class="ssec">
+      <div class="srow tap" onclick="toggleAbt()">
+        <div class="srow-left"><span class="ms">info</span><div class="slbl" id="lbl-about">About KODA</div></div>
+        <span class="ms" id="abt-arrow">expand_more</span>
+      </div>
+      <div id="abt-panel" style="display:none;">
+        <div class="abt-body" id="abt-text"></div>
+      </div>
+    </div>
+    <div class="ssec">
+      <div class="srow tap" onclick="doLogout()">
+        <div class="srow-left"><span class="ms" style="color:var(--ye)">logout</span><div class="slbl" id="lbl-logout" style="color:var(--ye)">Logout</div></div>
+      </div>
+      <div class="srow tap" onclick="confirmDelete()">
+        <div class="srow-left"><span class="ms" style="color:var(--re)">delete</span><div class="slbl" id="lbl-delacc" style="color:var(--re)">Delete Account</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAME -->
+<div id="pg-game" class="page">
+  <div id="game-logo">KODA</div>
+  <div id="game-sub" id="gsub">KODA</div>
+  <div id="lvlbar">
+    <span id="lvllbl">Level</span>
+    <span id="lvlnum">1/****</span>
+  </div>
+  <div id="grid"></div>
+  <div id="hint">Tap to type</div>
+  <button id="sbtn" onclick="submit()"><span class="ms">keyboard_return</span><span id="sbtn-lbl">Enter</span></button>
+  <div id="legend">
+    <div class="leg"><div class="legdot" style="background:var(--gbg);border:1px solid var(--gr);"></div><span id="leg-ok">✓</span></div>
+    <div class="leg"><div class="legdot" style="background:var(--ybg);border:1px solid var(--ye);"></div><span id="leg-near">~</span></div>
+    <div class="leg"><div class="legdot" style="background:var(--rbg);border:1px solid var(--re);"></div><span id="leg-no">✗</span></div>
+  </div>
+</div>
+
+<input id="hi" type="text" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" data-lpignore="true" data-form-type="other" data-1p-ignore="true" enterkeyhint="go" tabindex="-1" aria-hidden="true" readonly>
+<div id="toast"></div>
+
+<div id="ov"><div id="ovbox">
+  <div id="ovicon"><span class="ms" style="font-size:52px">star</span></div>
+  <div id="ovtitle"></div>
+  <div id="ovmsg"></div>
+  <button id="ovbtn" onclick="ovNext()"></button>
+</div></div>
+
+<div id="lmod" onclick="if(event.target===this)closeLang()"><div id="lbox">
+  <div id="lmod-title">Language</div>
+  <div id="lgrid"></div>
+</div></div>
+
+<div id="cfm"><div id="cfmbox">
+  <div id="cfmtitle"></div>
+  <div id="cfmmsg"></div>
+  <div class="cfmrow">
+    <button id="cfmyes" onclick="cfmDo()"></button>
+    <button id="cfmno" onclick="closeCfm()"></button>
+  </div>
+</div></div>
+
+
+
+
+<script>
+// ══ LANGS ══
+var T={
+ar:{d:'rtl',n:'العربية',f:'🇸🇦',sub:'كودا',username:'اسم المستخدم',password:'كلمة المرور',login:'تسجيل الدخول',register:'إنشاء حساب',
+  lv:'المرحلة',hint:'اضغط للكتابة',btn:'تأكيد',ok:'مكانه صح',near:'موجود مش مكانه',no:'مش موجود',
+  win:'أحسنت!',winM:'انتقلت للمرحلة {n}',winB:'المرحلة {n}',
+  los:'خسرت',losM:'الجواب: {a}\nإعادة المرحلة {n}',losB:'أعد المرحلة {n}',
+  nmO:'أرقام 0-9 فقط ✋',short:'ناقص!',u5t:'فُتح!',u5m:'وصلت للمرحلة 500!',u5b:'استمر ⚡',
+  play:'العب',lang:'اللغة',settings:'الإعدادات',exit:'خروج',
+  back:'رجوع',stitle:'الإعدادات',sfx:'المؤثرات الصوتية',sfxsub:'أصوات اللعبة',music:'موسيقى الخلفية',musicsub:'أصوات كونية حلال',musicsubSolar:'أصوات شمسية — حلال',musicsubAurora:'أصوات الشفق — حلال',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 \u0627\u0644\u0623\u0635\u0648\u0627\u062a \u0627\u0644\u0643\u0648\u0646\u064a\u0629 (\u062d\u0644\u0627\u0644)</div><div><b>\u0627\u0644\u0646\u0648\u0639:</b> \u0644\u062d\u0646 \u0643\u0648\u0646\u064a \u062d\u0642\u064a\u0642\u064a \u0647\u0627\u062f\u0626 \u2014 \u0645\u064f\u0648\u0644\u064e\u0651\u062f \u062f\u0627\u062e\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0633\u0644\u0651\u0645:</b> \u062f\u0648 \u0645\u0627\u062c\u0648\u0631 \u062e\u0645\u0627\u0633\u064a \u2014 \u062a\u0631\u062f\u062f 128Hz \u0627\u0644\u0637\u0628\u064a\u0639\u064a (\u0622\u0645\u0646 \u0643\u0644\u064a\u0627\u064b)</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0644\u062d\u0646:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u0644\u0627 \u064a\u0646\u0642\u0637\u0639)</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0637\u0628\u0642\u0627\u062a:</b> \u062f\u0631\u0648\u0646 + \u0648\u062a\u0631 + \u0644\u062d\u0646 + \u0647\u0627\u0631\u0645\u0648\u0646\u064a + \u062a\u0646\u0641\u0633 + shimmer + reverb \u0639\u0645\u064a\u0642</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u062d\u0645\u0627\u064a\u0629:</b> \u0641\u0644\u062a\u0631 low-pass \u064a\u0632\u064a\u0644 \u0627\u0644\u062a\u0631\u062f\u062f\u0627\u062a \u0627\u0644\u0645\u0624\u0630\u064a\u0629</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>\u0627\u0644\u062d\u0642\u0648\u0642:</b> Public Domain \u2014 \u0645\u064f\u0648\u0644\u064e\u0651\u062f \u0628\u0631\u0645\u062c\u064a\u0627\u064b\u060c \u0644\u0627 \u0645\u0644\u0641\u0627\u062a \u062e\u0627\u0631\u062c\u064a\u0629. \u0646\u062d\u0646 \u0644\u0633\u0646\u0627 \u0645\u062a\u0623\u0643\u062f\u064a\u0646 100% \u0645\u0646 \u062d\u0643\u0645\u0647 \u0627\u0644\u0634\u0631\u0639\u064a.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e \u0623\u0635\u0648\u0627\u062a \u0634\u0645\u0633\u064a\u0629 (\u062d\u0644\u0627\u0644)</div><div><b>\u0627\u0644\u0646\u0648\u0639:</b> \u0644\u062d\u0646 \u0643\u0648\u0646\u064a \u062f\u0627\u0641\u0626 \u2014 \u0645\u064f\u0648\u0644\u064e\u0651\u062f \u062f\u0627\u062e\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0633\u0644\u0651\u0645:</b> \u0635\u0648\u0644 \u0645\u0627\u062c\u0648\u0631 \u062e\u0645\u0627\u0633\u064a \u2014 \u062a\u0631\u062f\u062f 96Hz \u0627\u0644\u0637\u0628\u064a\u0639\u064a (\u062f\u0627\u0641\u0626 \u0648\u0645\u0634\u0631\u0642)</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0644\u062d\u0646:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u0644\u0627 \u064a\u0646\u0642\u0637\u0639)</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0637\u0628\u0642\u0627\u062a:</b> \u062f\u0631\u0648\u0646 \u0627\u0644\u0634\u0645\u0633 96Hz + \u0648\u062a\u0631 \u062f\u0627\u0641\u0626 + \u0644\u062d\u0646 \u0645\u0634\u0631\u0642 + \u0647\u0627\u0631\u0645\u0648\u0646\u064a + \u062a\u0646\u0641\u0633 + reverb \u0639\u0645\u064a\u0642</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u062d\u0645\u0627\u064a\u0629:</b> \u0641\u0644\u062a\u0631 low-pass 750Hz \u2014 \u062a\u0631\u062f\u062f\u0627\u062a \u0622\u0645\u0646\u0629 \u0643\u0644\u064a\u0627\u064b</div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>\u0627\u0644\u062d\u0642\u0648\u0642:</b> Public Domain \u2014 \u0645\u064f\u0648\u0644\u064e\u0651\u062f \u0628\u0631\u0645\u062c\u064a\u0627\u064b. \u0644\u0633\u0646\u0627 \u0645\u062a\u0623\u0643\u062f\u064a\u0646 100% \u0645\u0646 \u062d\u0643\u0645\u0647 \u0627\u0644\u0634\u0631\u0639\u064a.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c \u0623\u0635\u0648\u0627\u062a \u0627\u0644\u0634\u0641\u0642 (\u062d\u0644\u0627\u0644)</div><div><b>\u0627\u0644\u0646\u0648\u0639:</b> \u0644\u062d\u0646 \u0623\u062b\u064a\u0631\u064a \u0647\u0627\u062f\u0626 \u2014 \u0645\u064f\u0648\u0644\u064e\u0651\u062f \u062f\u0627\u062e\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0633\u0644\u0651\u0645:</b> \u0645\u064a \u0645\u064a\u0646\u0648\u0631 \u062e\u0645\u0627\u0633\u064a \u2014 \u062a\u0631\u062f\u062f 82.4Hz \u0627\u0644\u0637\u0628\u064a\u0639\u064a (\u063a\u0627\u0645\u0636 \u0648\u0647\u0627\u062f\u0626)</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0644\u062d\u0646:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u0644\u0627 \u064a\u0646\u0642\u0637\u0639)</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u0637\u0628\u0642\u0627\u062a:</b> \u062f\u0631\u0648\u0646 \u0639\u0645\u064a\u0642 82.4Hz + \u0648\u062a\u0631 \u0623\u062b\u064a\u0631\u064a + \u0644\u062d\u0646 \u0628\u0637\u064a\u0621 + \u0644\u0645\u0639\u0629 \u0639\u0627\u0644\u064a\u0629 + \u062a\u0646\u0641\u0633 + reverb \u0639\u0645\u064a\u0642 \u062c\u062f\u0627\u064b</div><div style=\"margin-top:5px\"><b>\u0627\u0644\u062d\u0645\u0627\u064a\u0629:</b> \u0641\u0644\u062a\u0631 low-pass 650Hz \u2014 \u0644\u0637\u064a\u0641 \u0644\u0644\u063a\u0627\u064a\u0629</div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>\u0627\u0644\u062d\u0642\u0648\u0642:</b> Public Domain \u2014 \u0645\u064f\u0648\u0644\u064e\u0651\u062f \u0628\u0631\u0645\u062c\u064a\u0627\u064b. \u0644\u0633\u0646\u0627 \u0645\u062a\u0623\u0643\u062f\u064a\u0646 100% \u0645\u0646 \u062d\u0643\u0645\u0647 \u0627\u0644\u0634\u0631\u0639\u064a.</div>",
+  theme:'الواجهة',about:'عن KODA',logout:'تسجيل الخروج',delacc:'حذف الحساب',wel:'مرحباً',
+  deltitle:'حذف الحساب',delmsg:'سيتم حذف حسابك وكل تقدمك نهائياً.',delyes:'نعم، احذف',delno:'إلغاء',exitMsg:'سيتم تسجيل خروجك من الحساب.',
+  abt:'مرحبًا بك في KODA\nKODA هي لعبة ألغاز تعتمد على التفكير والمنطق والتحدي المستمر.\n\nطريقة اللعب:\nتتكون لوحة اللعبة من شبكة مربعات بحجم 6 × 5.\nمهمتك هي تخمين الرقم الصحيح باستخدام عدد من المحاولات المتاحة.\nمع كل محاولة تحصل على معلومات تساعدك على الاقتراب من الحل الصحيح خطوة بعد خطوة.\n\nالتحدي في اللعبة:\n▪ تحتاج إلى التفكير والتحليل للوصول إلى الإجابة الصحيحة.\n▪ كل محاولة تقرّبك من الحل أو تجعلك تعيد حساباتك من جديد.\n▪ الفوز يعتمد على الذكاء والملاحظة الجيدة.\n\nاللعبة تقدم تجربة مميزة تجمع بين المتعة والتحدي الذهني. مع كل مرحلة ستكتشف أن التفكير المنطقي وحده هو طريقك للفوز.\n\nالتطوير:\nمن فريق KODA TEAM\nتم تطوير اللعبة بواسطة ZIAD ELSAYED DS'
+},
+en:{d:'ltr',n:'English',f:'🇬🇧',sub:'KODA',username:'Username',password:'Password',login:'Login',register:'Create Account',
+  lv:'Level',hint:'Tap to type',btn:'Enter',ok:'Correct',near:'Wrong spot',no:'Not in word',
+  win:'Excellent!',winM:'Moving to level {n}',winB:'Level {n} →',
+  los:'Game Over',losM:'Answer: {a}\nRetry level {n}',losB:'Retry {n}',
+  nmO:'Digits 0-9 only ✋',short:'Too short!',u5t:'Unlocked!',u5m:'You reached level 500!',u5b:'Continue ⚡',
+  play:'Play',lang:'Language',settings:'Settings',exit:'Exit',
+  back:'Back',stitle:'Settings',sfx:'Sound Effects',sfxsub:'Game sounds',music:'Background Sound',musicsub:'Cosmic tones — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",
+  theme:'Theme',about:'About KODA',logout:'Logout',delacc:'Delete Account',wel:'Welcome',
+  deltitle:'Delete Account',delmsg:'Your account and all progress will be permanently deleted.',delyes:'Yes, delete',delno:'Cancel',exitMsg:'You will be logged out of your account.',
+  abt:"Welcome to KODA\nKODA is a puzzle game that challenges your logic, reasoning, and pattern recognition.\n\nHow to play:\nThe game board is a 6×5 grid of squares.\nYour mission is to guess the correct number using the available attempts.\nEach attempt gives you clues that bring you closer to the answer step by step.\n\nThe challenge:\n▪ Every guess requires analysis and deduction.\n▪ Each attempt either confirms your thinking or forces you to reconsider.\n▪ Winning depends on intelligence and sharp observation.\n\nKODA offers a unique experience that blends fun with mental challenge. With every level, you'll discover that logical thinking is your only path to victory.\n\nDeveloped by: KODA TEAM\nCreated by: ZIAD ELSAYED DS"
+},
+ko:{d:'ltr',n:'한국어',f:'🇰🇷',sub:'코다',username:'사용자명',password:'비밀번호',login:'로그인',register:'계정 만들기',
+  lv:'레벨',hint:'탭하여 입력',btn:'확인',ok:'정확',near:'위치 틀림',no:'없음',
+  win:'훌륭해요!',winM:'{n}레벨로 이동',winB:'{n}레벨',los:'게임 오버',losM:'정답: {a}\n{n}레벨 재시도',losB:'{n}레벨',
+  nmO:'숫자 0-9만 ✋',short:'부족해요!',u5t:'잠금 해제! 🔓',u5m:'500레벨 달성!',u5b:'계속 ⚡',
+  play:'플레이',lang:'언어',settings:'설정',exit:'나가기',
+  back:'뒤로',stitle:'설정',sfx:'효과음',sfxsub:'게임 사운드',music:'배경음',musicsub:'우주 소리 — 허용',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'테마',about:'KODA 소개',logout:'로그아웃',delacc:'계정 삭제',wel:'환영합니다',
+  deltitle:'계정 삭제',delmsg:'계정과 모든 진행상황이 영구 삭제됩니다.',delyes:'삭제',delno:'취소',
+  abt:'코다에 오신 것을 환영합니다\nKODA는 사고력, 논리력, 지속적인 도전을 바탕으로 한 퍼즐 게임입니다.\n\n게임 방법:\n게임 보드는 6×5 격자로 구성됩니다.\n주어진 시도 횟수 안에 올바른 숫자를 맞추는 것이 목표입니다.\n매 시도마다 정답에 더 가까워지도록 돕는 단서를 얻습니다.\n\n도전 과제:\n▪ 정답을 찾기 위해 생각하고 분석해야 합니다.\n▪ 모든 시도가 해결책에 가깝게 하거나 전략을 재고하게 만듭니다.\n▪ 승리는 지능과 예리한 관찰력에 달려 있습니다.\n\n개발:\nKODA TEAM\n제작: ZIAD ELSAYED DS'
+},
+ja:{d:'ltr',n:'日本語',f:'🇯🇵',sub:'コーダ',username:'ユーザー名',password:'パスワード',login:'ログイン',register:'アカウント作成',
+  lv:'レベル',hint:'タップして入力',btn:'確認',ok:'正解',near:'位置違い',no:'なし',
+  win:'素晴らしい！',winM:'レベル{n}へ',winB:'レベル{n}',los:'ゲームオーバー',losM:'答え: {a}\nレベル{n}再挑戦',losB:'レベル{n}',
+  nmO:'数字0〜9のみ ✋',short:'足りない！',u5t:'解放！🔓',u5m:'レベル500達成！',u5b:'続ける ⚡',
+  play:'プレイ',lang:'言語',settings:'設定',exit:'終了',
+  back:'戻る',stitle:'設定',sfx:'効果音',sfxsub:'ゲームサウンド',music:'環境音',musicsub:'宇宙の音 — ハラール',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'テーマ',about:'KODAについて',logout:'ログアウト',delacc:'アカウント削除',wel:'ようこそ',
+  deltitle:'アカウント削除',delmsg:'アカウントと進行状況が完全に削除されます。',delyes:'削除',delno:'キャンセル',
+  abt:'KODAへようこそ\nKODAは思考力・論理・継続的な挑戦をベースにしたパズルゲームです。\n\nゲームの遊び方:\nゲームボードは6×5のマス目で構成されています。\n与えられた試行回数内に正しい数字を当てることが目標です。\n毎回のトライアルで正解に近づくためのヒントが得られます。\n\n挑戦:\n▪ 正解にたどり着くために考え、分析する必要があります。\n▪ 全ての試みが解決策に近づかせるか戦略の見直しを促します。\n▪ 勝利は知性と鋭い観察力にかかっています。\n\n開発:\nKODA TEAM\n制作: ZIAD ELSAYED DS'
+},
+zh:{d:'ltr',n:'中文',f:'🇨🇳',sub:'密码',username:'用户名',password:'密码',login:'登录',register:'创建账户',
+  lv:'关卡',hint:'点击输入',btn:'确认',ok:'正确',near:'位置错',no:'不存在',
+  win:'太棒了！',winM:'前往第{n}关',winB:'第{n}关',los:'游戏结束',losM:'答案：{a}\n重试第{n}关',losB:'第{n}关',
+  nmO:'只能输入0-9 ✋',short:'太短！',u5t:'解锁！🔓',u5m:'到达第500关！',u5b:'继续 ⚡',
+  play:'开始',lang:'语言',settings:'设置',exit:'退出',
+  back:'返回',stitle:'设置',sfx:'音效',sfxsub:'游戏音效',music:'背景音效',musicsub:'宇宙音调 — 清真',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'主题',about:'关于KODA',logout:'退出登录',delacc:'删除账户',wel:'欢迎',
+  deltitle:'删除账户',delmsg:'您的账户和所有进度将被永久删除。',delyes:'删除',delno:'取消',
+  abt:'欢迎来到KODA\nKODA是一款基于思维、逻辑和持续挑战的益智游戏。\n\n游戏玩法:\n游戏板由6×5的方格组成。\n你的任务是在有限次数内猜出正确的数字。\n每次猜测都会获得帮助你逐步接近正确答案的线索。\n\n挑战:\n▪ 你需要思考和分析才能找到正确答案。\n▪ 每次尝试都会让你更接近解决方案或重新调整策略。\n▪ 胜利取决于智慧和敏锐的观察力。\n\n开发:\nKODA TEAM\n开发者: ZIAD ELSAYED DS'
+},
+fr:{d:'ltr',n:'Français',f:'🇫🇷',sub:'KODA',username:'Nom d\'utilisateur',password:'Mot de passe',login:'Connexion',register:'Créer un compte',
+  lv:'Niveau',hint:'Appuyer pour saisir',btn:'Valider',ok:'Correct',near:'Mauvaise place',no:'Absent',
+  win:'Excellent!',winM:'Niveau {n}',winB:'Niveau {n}',los:'Perdu!',losM:'Réponse: {a}\nNiveau {n}',losB:'Niveau {n}',
+  nmO:'Chiffres 0-9 ✋',short:'Trop court!',u5t:'Débloqué! 🔓',u5m:'Niveau 500!',u5b:'Continuer ⚡',
+  play:'Jouer',lang:'Langue',settings:'Paramètres',exit:'Quitter',
+  back:'Retour',stitle:'Paramètres',sfx:'Sons',sfxsub:'Sons du jeu',music:'Son ambiant',musicsub:'Sons cosmiques — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Thème',about:'À propos',logout:'Déconnexion',delacc:'Supprimer compte',wel:'Bienvenue',
+  deltitle:'Supprimer',delmsg:'Votre compte sera supprimé définitivement.',delyes:'Supprimer',delno:'Annuler',
+  abt:"Bienvenue dans KODA\nKODA est un jeu de puzzle basé sur la réflexion, la logique et le défi continu.\n\nComment jouer:\nLe plateau est composé d'une grille 6×5.\nVotre mission est de deviner le bon nombre en utilisant les tentatives disponibles.\nÀ chaque tentative vous recevez des indices qui vous aident à vous rapprocher de la bonne réponse.\n\nLe défi:\n▪ Vous devez réfléchir et analyser pour trouver la bonne réponse.\n▪ Chaque tentative vous rapproche de la solution ou vous fait revoir votre stratégie.\n▪ La victoire dépend de l'intelligence et de l'observation.\n\nDéveloppement:\nKODA TEAM\nDéveloppé par ZIAD ELSAYED DS"
+},
+es:{d:'ltr',n:'Español',f:'🇪🇸',sub:'KODA',username:'Usuario',password:'Contraseña',login:'Iniciar sesión',register:'Crear cuenta',
+  lv:'Nivel',hint:'Toca para escribir',btn:'Confirmar',ok:'Correcto',near:'Mal lugar',no:'No existe',
+  win:'¡Excelente!',winM:'Nivel {n}',winB:'Nivel {n}',los:'¡Perdiste!',losM:'Respuesta: {a}\nNivel {n}',losB:'Nivel {n}',
+  nmO:'Solo 0-9 ✋',short:'¡Muy corto!',u5t:'¡Desbloqueado! 🔓',u5m:'¡Nivel 500!',u5b:'Continuar ⚡',
+  play:'Jugar',lang:'Idioma',settings:'Ajustes',exit:'Salir',
+  back:'Volver',stitle:'Ajustes',sfx:'Sonidos',sfxsub:'Sonidos del juego',music:'Sonido ambiental',musicsub:'Tonos cósmicos — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Tema',about:'Acerca de',logout:'Salir',delacc:'Eliminar cuenta',wel:'Bienvenido',
+  deltitle:'Eliminar',delmsg:'Tu cuenta será eliminada permanentemente.',delyes:'Eliminar',delno:'Cancelar',
+  abt:"Bienvenido a KODA\nKODA es un juego de puzzles basado en el pensamiento, la lógica y el desafío continuo.\n\nCómo jugar:\nEl tablero consiste en una cuadrícula 6×5.\nTu misión es adivinar el número correcto usando los intentos disponibles.\nCon cada intento recibes pistas que te ayudan a acercarte a la respuesta correcta.\n\nEl desafío:\n▪ Necesitas pensar y analizar para llegar a la respuesta correcta.\n▪ Cada intento te acerca a la solución o te hace repensar tu estrategia.\n▪ Ganar depende de la inteligencia y la observación aguda.\n\nDesarrollo:\nKODA TEAM\nDesarrollado por ZIAD ELSAYED DS"
+},
+pt:{d:'ltr',n:'Português',f:'🇵🇹',sub:'KODA',username:'Usuário',password:'Senha',login:'Entrar',register:'Criar conta',
+  lv:'Nível',hint:'Toque para digitar',btn:'Confirmar',ok:'Correto',near:'Lugar errado',no:'Ausente',
+  win:'Excelente!',winM:'Nível {n}',winB:'Nível {n}',los:'Perdeu!',losM:'Resposta: {a}\nNível {n}',losB:'Nível {n}',
+  nmO:'Só 0-9 ✋',short:'Muito curto!',u5t:'Desbloqueado! 🔓',u5m:'Nível 500!',u5b:'Continuar ⚡',
+  play:'Jogar',lang:'Idioma',settings:'Config',exit:'Sair',
+  back:'Voltar',stitle:'Configurações',sfx:'Sons',sfxsub:'Sons do jogo',music:'Som ambiente',musicsub:'Sons cósmicos — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Tema',about:'Sobre',logout:'Sair',delacc:'Excluir conta',wel:'Bem-vindo',
+  deltitle:'Excluir',delmsg:'Sua conta será excluída permanentemente.',delyes:'Excluir',delno:'Cancelar',
+  abt:"Bem-vindo ao KODA\nKODA é um jogo de puzzle baseado em pensamento, lógica e desafio contínuo.\n\nComo jogar:\nO tabuleiro consiste em uma grade 6×5.\nSua missão é adivinhar o número correto usando as tentativas disponíveis.\nCom cada tentativa você recebe dicas que ajudam a se aproximar da resposta correta.\n\nO desafio:\n▪ Você precisa pensar e analisar para chegar à resposta correta.\n▪ Cada tentativa te aproxima da solução ou faz repensar sua estratégia.\n▪ Vencer depende de inteligência e observação aguçada.\n\nDesenvolvimento:\nKODA TEAM\nDesenvolvido por ZIAD ELSAYED DS"
+},
+de:{d:'ltr',n:'Deutsch',f:'🇩🇪',sub:'KODA',username:'Benutzername',password:'Passwort',login:'Anmelden',register:'Konto erstellen',
+  lv:'Level',hint:'Tippen',btn:'Bestätigen',ok:'Richtig',near:'Falscher Platz',no:'Nicht da',
+  win:'Ausgezeichnet!',winM:'Level {n}',winB:'Level {n}',los:'Verloren!',losM:'Antwort: {a}\nLevel {n}',losB:'Level {n}',
+  nmO:'Nur 0-9 ✋',short:'Zu kurz!',u5t:'Freigeschaltet! 🔓',u5m:'Level 500!',u5b:'Weiter ⚡',
+  play:'Spielen',lang:'Sprache',settings:'Einstellungen',exit:'Beenden',
+  back:'Zurück',stitle:'Einstellungen',sfx:'Sounds',sfxsub:'Spielsounds',music:'Hintergrundton',musicsub:'Kosmische Töne — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Design',about:'Über KODA',logout:'Abmelden',delacc:'Konto löschen',wel:'Willkommen',
+  deltitle:'Löschen',delmsg:'Ihr Konto wird dauerhaft gelöscht.',delyes:'Löschen',delno:'Abbrechen',
+  abt:"Willkommen bei KODA\nKODA ist ein Puzzlespiel basierend auf Denken, Logik und kontinuierlicher Herausforderung.\n\nSo wird gespielt:\nDas Spielfeld besteht aus einem 6×5-Raster.\nDeine Aufgabe ist es die richtige Zahl mit den verfügbaren Versuchen zu erraten.\nMit jedem Versuch erhältst du Hinweise die dir helfen der richtigen Antwort näher zu kommen.\n\nDie Herausforderung:\n▪ Du musst denken und analysieren um die richtige Antwort zu finden.\n▪ Jeder Versuch bringt dich der Lösung näher oder lässt dich deine Strategie überdenken.\n▪ Gewinnen hängt von Intelligenz und scharfer Beobachtung ab.\n\nEntwicklung:\nKODA TEAM\nEntwickelt von ZIAD ELSAYED DS"
+},
+it:{d:'ltr',n:'Italiano',f:'🇮🇹',sub:'KODA',username:'Nome utente',password:'Password',login:'Accedi',register:'Crea account',
+  lv:'Livello',hint:'Tocca per scrivere',btn:'Conferma',ok:'Corretto',near:'Posto sbagliato',no:'Assente',
+  win:'Eccellente!',winM:'Livello {n}',winB:'Livello {n}',los:'Perso!',losM:'Risposta: {a}\nLivello {n}',losB:'Livello {n}',
+  nmO:'Solo 0-9 ✋',short:'Troppo corto!',u5t:'Sbloccato! 🔓',u5m:'Livello 500!',u5b:'Continua ⚡',
+  play:'Gioca',lang:'Lingua',settings:'Impostazioni',exit:'Esci',
+  back:'Indietro',stitle:'Impostazioni',sfx:'Suoni',sfxsub:'Suoni di gioco',music:'Suono ambientale',musicsub:'Toni cosmici — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Tema',about:'Su KODA',logout:'Esci',delacc:'Elimina account',wel:'Benvenuto',
+  deltitle:'Elimina',delmsg:'Il tuo account verrà eliminato definitivamente.',delyes:'Elimina',delno:'Annulla',
+  abt:"Benvenuto in KODA\nKODA è un gioco di puzzle basato sul pensiero, la logica e la sfida continua.\n\nCome giocare:\nIl tabellone è composto da una griglia 6×5.\nLa tua missione è indovinare il numero corretto usando i tentativi disponibili.\nAd ogni tentativo ricevi indizi che ti aiutano ad avvicinarti alla risposta corretta.\n\nLa sfida:\n▪ Devi pensare e analizzare per trovare la risposta corretta.\n▪ Ogni tentativo ti avvicina alla soluzione o ti fa ripensare la tua strategia.\n▪ Vincere dipende dall'intelligenza e dall'osservazione acuta.\n\nSviluppo:\nKODA TEAM\nSviluppato da ZIAD ELSAYED DS"
+},
+ru:{d:'ltr',n:'Русский',f:'🇷🇺',sub:'КОДА',username:'Имя пользователя',password:'Пароль',login:'Войти',register:'Создать аккаунт',
+  lv:'Уровень',hint:'Нажмите для ввода',btn:'Ввод',ok:'Верно',near:'Не там',no:'Нет',
+  win:'Отлично!',winM:'Уровень {n}',winB:'Уровень {n}',los:'Проигрыш!',losM:'Ответ: {a}\nУровень {n}',losB:'Уровень {n}',
+  nmO:'Только 0-9 ✋',short:'Слишком коротко!',u5t:'Разблокировано! 🔓',u5m:'Уровень 500!',u5b:'Продолжить ⚡',
+  play:'Играть',lang:'Язык',settings:'Настройки',exit:'Выйти',
+  back:'Назад',stitle:'Настройки',sfx:'Звуки',sfxsub:'Звуки игры',music:'Фоновый звук',musicsub:'Космические тоны — Халяль',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Тема',about:'О KODA',logout:'Выйти',delacc:'Удалить аккаунт',wel:'Добро пожаловать',
+  deltitle:'Удалить',delmsg:'Ваш аккаунт будет удалён навсегда.',delyes:'Удалить',delno:'Отмена',
+  abt:"Добро пожаловать в KODA\nKODA — это головоломка основанная на мышлении, логике и постоянном вызове.\n\nКак играть:\nИгровое поле состоит из сетки 6×5.\nВаша задача — угадать правильное число за доступные попытки.\nС каждой попыткой вы получаете подсказки приближающие вас к правильному ответу.\n\nВызов:\n▪ Нужно думать и анализировать чтобы найти правильный ответ.\n▪ Каждая попытка приближает к решению или заставляет пересмотреть стратегию.\n▪ Победа зависит от интеллекта и наблюдательности.\n\nРазработка:\nKODA TEAM\nРазработано: ZIAD ELSAYED DS"
+},
+tr:{d:'ltr',n:'Türkçe',f:'🇹🇷',sub:'KODA',username:'Kullanıcı adı',password:'Şifre',login:'Giriş',register:'Hesap oluştur',
+  lv:'Seviye',hint:'Yazmak için dokun',btn:'Onayla',ok:'Doğru',near:'Yanlış yer',no:'Yok',
+  win:'Mükemmel!',winM:'Seviye {n}',winB:'Seviye {n}',los:'Kaybettin!',losM:'Cevap: {a}\nSeviye {n}',losB:'Seviye {n}',
+  nmO:'Sadece 0-9 ✋',short:'Çok kısa!',u5t:'Açıldı! 🔓',u5m:'Seviye 500!',u5b:'Devam ⚡',
+  play:'Oyna',lang:'Dil',settings:'Ayarlar',exit:'Çıkış',
+  back:'Geri',stitle:'Ayarlar',sfx:'Sesler',sfxsub:'Oyun sesleri',music:'Arka plan sesi',musicsub:'Kozmik sesler — Helal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Tema',about:'KODA Hakkında',logout:'Çıkış',delacc:'Hesabı Sil',wel:'Hoş geldiniz',
+  deltitle:'Sil',delmsg:'Hesabınız kalıcı olarak silinecek.',delyes:'Sil',delno:'İptal',
+  abt:"KODA'ya Hoş Geldiniz\nKODA düşünme, mantık ve sürekli zorluğa dayalı bir bulmaca oyunudur.\n\nNasıl Oynanır:\nOyun tahtası 6×5'lik bir ızgaradan oluşmaktadır.\nGöreviniz mevcut deneme hakkınızı kullanarak doğru sayıyı tahmin etmektir.\nHer denemede doğru cevaba yaklaşmanıza yardımcı olan ipuçları alırsınız.\n\nZorluk:\n▪ Doğru cevaba ulaşmak için düşünmeniz ve analiz etmeniz gerekir.\n▪ Her deneme sizi çözüme yaklaştırır ya da stratejinizi yeniden gözden geçirmenizi sağlar.\n▪ Kazanmak zekaya ve keskin gözleme dayanır.\n\nGeliştirme:\nKODA TEAM\nGeliştiren: ZIAD ELSAYED DS"
+},
+fa:{d:'rtl',n:'فارسی',f:'🇮🇷',sub:'کودا',username:'نام کاربری',password:'رمز عبور',login:'ورود',register:'ساخت حساب',
+  lv:'سطح',hint:'لمس برای تایپ',btn:'تأیید',ok:'درست',near:'جای اشتباه',no:'نیست',
+  win:'عالی!',winM:'سطح {n}',winB:'سطح {n}',los:'باختی!',losM:'جواب: {a}\nسطح {n}',losB:'سطح {n}',
+  nmO:'فقط 0-9 ✋',short:'کوتاه!',u5t:'باز شد! 🔓',u5m:'سطح 500!',u5b:'ادامه ⚡',
+  play:'بازی',lang:'زبان',settings:'تنظیمات',exit:'خروج',
+  back:'برگشت',stitle:'تنظیمات',sfx:'صدا',sfxsub:'صدای بازی',music:'صدای پس‌زمینه',musicsub:'اصوات کیهانی — حلال',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'تم',about:'درباره KODA',logout:'خروج',delacc:'حذف حساب',wel:'خوش آمدید',
+  deltitle:'حذف',delmsg:'حساب شما برای همیشه حذف خواهد شد.',delyes:'حذف',delno:'لغو',
+  abt:'به KODA خوش آمدید\nKODA یک بازی معما بر اساس تفکر، منطق و چالش مستمر است.\n\nنحوه بازی:\nصفحه بازی از یک شبکه ۶×۵ تشکیل شده است.\nماموریت شما حدس زدن عدد صحیح با استفاده از تلاشهای موجود است.\nبا هر تلاش سرنخهایی دریافت میکنید که به شما کمک میکند به پاسخ صحیح نزدیکتر شوید.\n\nچالش:\n▪ برای رسیدن به پاسخ صحیح باید فکر کنید و تحلیل کنید.\n▪ هر تلاش شما را به راهحل نزدیکتر میکند یا استراتژی شما را تغییر میدهد.\n▪ پیروزی به هوش و مشاهده دقیق بستگی دارد.\n\nتوسعه:\nKODA TEAM\nتوسعه‌دهنده: ZIAD ELSAYED DS'
+},
+hi:{d:'ltr',n:'हिन्दी',f:'🇮🇳',sub:'कोडा',username:'उपयोगकर्ता नाम',password:'पासवर्ड',login:'लॉगिन',register:'खाता बनाएं',
+  lv:'स्तर',hint:'टाइप करें',btn:'दर्ज करें',ok:'सही',near:'गलत जगह',no:'नहीं है',
+  win:'शानदार!',winM:'स्तर {n}',winB:'स्तर {n}',los:'हार गए!',losM:'उत्तर: {a}\nस्तर {n}',losB:'स्तर {n}',
+  nmO:'केवल 0-9 ✋',short:'बहुत छोटा!',u5t:'अनलॉक! 🔓',u5m:'स्तर 500!',u5b:'जारी रखें ⚡',
+  play:'खेलें',lang:'भाषा',settings:'सेटिंग्स',exit:'बाहर',
+  back:'वापस',stitle:'सेटिंग्स',sfx:'ध्वनि',sfxsub:'गेम ध्वनि',music:'पृष्ठभूमि ध्वनि',musicsub:'ब्रह्मांडीय स्वर — हलाल',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'थीम',about:'KODA के बारे में',logout:'लॉगआउट',delacc:'खाता हटाएं',wel:'स्वागत है',
+  deltitle:'हटाएं',delmsg:'आपका खाता स्थायी रूप से हटा दिया जाएगा।',delyes:'हटाएं',delno:'रद्द करें',
+  abt:'KODA में आपका स्वागत है\nKODA सोच, तर्क और निरंतर चुनौती पर आधारित एक पहेली खेल है।\n\nकैसे खेलें:\nखेल का बोर्ड 6×5 के ग्रिड से बना है।\nआपका मिशन उपलब्ध प्रयासों का उपयोग करके सही संख्या का अनुमान लगाना है।\nहर प्रयास के साथ आपको सुराग मिलते हैं जो आपको सही उत्तर के करीब लाते हैं।\n\nचुनौती:\n▪ सही उत्तर तक पहुंचने के लिए सोचना और विश्लेषण करना होगा।\n▪ हर प्रयास आपको समाधान के करीब लाता है या रणनीति बदलने पर मजबूर करता है।\n▪ जीतना बुद्धि और तीव्र अवलोकन पर निर्भर करता है।\n\nविकास:\nKODA TEAM\nनिर्मित: ZIAD ELSAYED DS'
+},
+id:{d:'ltr',n:'Indonesia',f:'🇮🇩',sub:'KODA',username:'Nama pengguna',password:'Kata sandi',login:'Masuk',register:'Buat akun',
+  lv:'Level',hint:'Ketuk untuk mengetik',btn:'Kirim',ok:'Tepat',near:'Posisi salah',no:'Tidak ada',
+  win:'Luar biasa!',winM:'Level {n}',winB:'Level {n}',los:'Kalah!',losM:'Jawaban: {a}\nLevel {n}',losB:'Level {n}',
+  nmO:'Hanya 0-9 ✋',short:'Kurang!',u5t:'Terbuka! 🔓',u5m:'Level 500!',u5b:'Lanjutkan ⚡',
+  play:'Main',lang:'Bahasa',settings:'Pengaturan',exit:'Keluar',
+  back:'Kembali',stitle:'Pengaturan',sfx:'Suara',sfxsub:'Suara permainan',music:'Suara latar',musicsub:'Nada kosmis — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Tema',about:'Tentang KODA',logout:'Keluar',delacc:'Hapus Akun',wel:'Selamat datang',
+  deltitle:'Hapus',delmsg:'Akun Anda akan dihapus permanen.',delyes:'Hapus',delno:'Batal',
+  abt:'Selamat Datang di KODA\nKODA adalah game puzzle berbasis pemikiran, logika, dan tantangan berkelanjutan.\n\nCara bermain:\nPapan permainan terdiri dari grid 6×5.\nMisi Anda adalah menebak angka yang benar menggunakan percobaan yang tersedia.\nSetiap percobaan memberi petunjuk yang membantu mendekati jawaban yang benar.\n\nTantangan:\n▪ Anda perlu berpikir dan menganalisis untuk menemukan jawaban yang benar.\n▪ Setiap percobaan mendekatkan Anda ke solusi atau membuat Anda memikirkan ulang strategi.\n▪ Menang bergantung pada kecerdasan dan pengamatan tajam.\n\nPengembangan:\nKODA TEAM\nDikembangkan oleh ZIAD ELSAYED DS'
+},
+nl:{d:'ltr',n:'Nederlands',f:'🇳🇱',sub:'KODA',username:'Gebruikersnaam',password:'Wachtwoord',login:'Inloggen',register:'Account aanmaken',
+  lv:'Niveau',hint:'Tik om te typen',btn:'Bevestig',ok:'Juist',near:'Verkeerde plek',no:'Afwezig',
+  win:'Uitstekend!',winM:'Niveau {n}',winB:'Niveau {n}',los:'Verloren!',losM:'Antwoord: {a}\nNiveau {n}',losB:'Niveau {n}',
+  nmO:'Alleen 0-9 ✋',short:'Te kort!',u5t:'Ontgrendeld! 🔓',u5m:'Niveau 500!',u5b:'Doorgaan ⚡',
+  play:'Spelen',lang:'Taal',settings:'Instellingen',exit:'Afsluiten',
+  back:'Terug',stitle:'Instellingen',sfx:'Geluiden',sfxsub:'Spelgeluiden',music:'Achtergrondgeluid',musicsub:'Kosmische tonen — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Thema',about:'Over KODA',logout:'Uitloggen',delacc:'Account verwijderen',wel:'Welkom',
+  deltitle:'Verwijderen',delmsg:'Uw account wordt permanent verwijderd.',delyes:'Verwijderen',delno:'Annuleren',
+  abt:'Welkom bij KODA\nKODA is een puzzelspel gebaseerd op denken, logica en voortdurende uitdaging.\n\nHoe te spelen:\nHet speelbord bestaat uit een 6×5 raster.\nJouw missie is het juiste getal te raden met de beschikbare pogingen.\nBij elke poging ontvang je hints die je helpen dichter bij het juiste antwoord te komen.\n\nDe uitdaging:\n▪ Je moet nadenken en analyseren om het juiste antwoord te vinden.\n▪ Elke poging brengt je dichter bij de oplossing of laat je je strategie herzien.\n▪ Winnen hangt af van intelligentie en scherpe observatie.\n\nOntwikkeling:\nKODA TEAM\nOntwikkeld door ZIAD ELSAYED DS'
+},
+pl:{d:'ltr',n:'Polski',f:'🇵🇱',sub:'KODA',username:'Nazwa użytkownika',password:'Hasło',login:'Zaloguj',register:'Utwórz konto',
+  lv:'Poziom',hint:'Dotknij aby pisać',btn:'Zatwierdź',ok:'Poprawnie',near:'Zła pozycja',no:'Brak',
+  win:'Świetnie!',winM:'Poziom {n}',winB:'Poziom {n}',los:'Przegrana!',losM:'Odpowiedź: {a}\nPoziom {n}',losB:'Poziom {n}',
+  nmO:'Tylko 0-9 ✋',short:'Za krótko!',u5t:'Odblokowano! 🔓',u5m:'Poziom 500!',u5b:'Kontynuuj ⚡',
+  play:'Graj',lang:'Język',settings:'Ustawienia',exit:'Wyjdź',
+  back:'Wróć',stitle:'Ustawienia',sfx:'Dźwięki',sfxsub:'Dźwięki gry',music:'Dźwięk tła',musicsub:'Dźwięki kosmiczne — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Motyw',about:'O KODA',logout:'Wyloguj',delacc:'Usuń konto',wel:'Witamy',
+  deltitle:'Usuń',delmsg:'Twoje konto zostanie trwale usunięte.',delyes:'Usuń',delno:'Anuluj',
+  abt:'Witaj w KODA\nKODA to gra logiczna oparta na myśleniu, logice i ciągłym wyzwaniu.\n\nJak grać:\nPlansza składa się z siatki 6×5.\nTwoim zadaniem jest odgadnięcie właściwej liczby przy użyciu dostępnych prób.\nPrzy każdej próbie otrzymujesz wskazówki pomagające zbliżyć się do właściwej odpowiedzi.\n\nWyzwanie:\n▪ Musisz myśleć i analizować aby znaleźć właściwą odpowiedź.\n▪ Każda próba przybliża cię do rozwiązania lub zmusza do przemyślenia strategii.\n▪ Wygranie zależy od inteligencji i przenikliwości.\n\nRozwój:\nKODA TEAM\nStworzone przez ZIAD ELSAYED DS'
+},
+sv:{d:'ltr',n:'Svenska',f:'🇸🇪',sub:'KODA',username:'Användarnamn',password:'Lösenord',login:'Logga in',register:'Skapa konto',
+  lv:'Nivå',hint:'Tryck för att skriva',btn:'Bekräfta',ok:'Rätt',near:'Fel plats',no:'Saknas',
+  win:'Utmärkt!',winM:'Nivå {n}',winB:'Nivå {n}',los:'Förlorade!',losM:'Svar: {a}\nNivå {n}',losB:'Nivå {n}',
+  nmO:'Bara 0-9 ✋',short:'För kort!',u5t:'Upplåst! 🔓',u5m:'Nivå 500!',u5b:'Fortsätt ⚡',
+  play:'Spela',lang:'Språk',settings:'Inställningar',exit:'Avsluta',
+  back:'Tillbaka',stitle:'Inställningar',sfx:'Ljud',sfxsub:'Spelljud',music:'Bakgrundsljud',musicsub:'Kosmiska toner — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Tema',about:'Om KODA',logout:'Logga ut',delacc:'Radera konto',wel:'Välkommen',
+  deltitle:'Radera',delmsg:'Ditt konto raderas permanent.',delyes:'Radera',delno:'Avbryt',
+  abt:'Välkommen till KODA\nKODA är ett pusselspel baserat på tänkande, logik och kontinuerliga utmaningar.\n\nSå spelar du:\nSpelplanen består av ett 6×5-rutnät.\nDitt uppdrag är att gissa rätt tal med tillgängliga försök.\nVid varje försök får du ledtrådar som hjälper dig att komma närmre svaret.\n\nUtmaningen:\n▪ Du behöver tänka och analysera för att hitta rätt svar.\n▪ Varje försök för dig närmre lösningen eller tvingar dig att ompröva din strategi.\n▪ Att vinna beror på intelligens och skarp observation.\n\nUtveckling:\nKODA TEAM\nUtvecklat av ZIAD ELSAYED DS'
+},
+el:{d:'ltr',n:'Ελληνικά',f:'🇬🇷',sub:'ΚΟΔΑ',username:'Όνομα χρήστη',password:'Κωδικός',login:'Σύνδεση',register:'Δημιουργία λογαριασμού',
+  lv:'Επίπεδο',hint:'Πατήστε για πληκτρολόγηση',btn:'Επιβεβαίωση',ok:'Σωστό',near:'Λάθος θέση',no:'Δεν υπάρχει',
+  win:'Εξαιρετικό!',winM:'Επίπεδο {n}',winB:'Επίπεδο {n}',los:'Χάσατε!',losM:'Απάντηση: {a}\nΕπίπεδο {n}',losB:'Επίπεδο {n}',
+  nmO:'Μόνο 0-9 ✋',short:'Πολύ κοντό!',u5t:'Ξεκλείδωσε! 🔓',u5m:'Επίπεδο 500!',u5b:'Συνέχεια ⚡',
+  play:'Παίξε',lang:'Γλώσσα',settings:'Ρυθμίσεις',exit:'Έξοδος',
+  back:'Πίσω',stitle:'Ρυθμίσεις',sfx:'Ήχοι',sfxsub:'Ήχοι παιχνιδιού',music:'Ήχος φόντου',musicsub:'Κοσμικοί τόνοι — Χαλάλ',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Θέμα',about:'Σχετικά',logout:'Αποσύνδεση',delacc:'Διαγραφή λογαριασμού',wel:'Καλωσήρθατε',
+  deltitle:'Διαγραφή',delmsg:'Ο λογαριασμός σας θα διαγραφεί οριστικά.',delyes:'Διαγραφή',delno:'Ακύρωση',
+  abt:'Καλωσήρθατε στο KODA\nΤο KODA είναι ένα παιχνίδι γρίφων βασισμένο στη σκέψη, τη λογική και τη συνεχή πρόκληση.\n\nΠώς να παίξετε:\nΟ πίνακας αποτελείται από πλέγμα 6×5.\nΑποστολή σας είναι να μαντέψετε τον σωστό αριθμό με τις διαθέσιμες προσπάθειες.\nΜε κάθε προσπάθεια λαμβάνετε στοιχεία που σας βοηθούν να πλησιάζετε στη σωστή απάντηση.\n\nΗ πρόκληση:\n▪ Πρέπει να σκεφτείτε και να αναλύσετε για να βρείτε τη σωστή απάντηση.\n▪ Κάθε προσπάθεια σας φέρνει πιο κοντά στη λύση ή σας αναγκάζει να επανεξετάσετε τη στρατηγική σας.\n▪ Η νίκη εξαρτάται από την ευφυΐα και την οξυδέρκεια.\n\nΑνάπτυξη:\nKODA TEAM\nΑναπτύχθηκε από ZIAD ELSAYED DS'
+},
+uk:{d:'ltr',n:'Українська',f:'🇺🇦',sub:'КОДА',username:'Ім\'я користувача',password:'Пароль',login:'Увійти',register:'Створити акаунт',
+  lv:'Рівень',hint:'Торкніться для введення',btn:'Підтвердити',ok:'Вірно',near:'Не там',no:'Відсутнє',
+  win:'Чудово!',winM:'Рівень {n}',winB:'Рівень {n}',los:'Програш!',losM:'Відповідь: {a}\nРівень {n}',losB:'Рівень {n}',
+  nmO:'Тільки 0-9 ✋',short:'Надто коротко!',u5t:'Розблоковано! 🔓',u5m:'Рівень 500!',u5b:'Продовжити ⚡',
+  play:'Грати',lang:'Мова',settings:'Налаштування',exit:'Вийти',
+  back:'Назад',stitle:'Налаштування',sfx:'Звуки',sfxsub:'Звуки гри',music:'Фоновий звук',musicsub:'Космічні тони — Халяль',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Тема',about:'Про KODA',logout:'Вийти',delacc:'Видалити акаунт',wel:'Ласкаво просимо',
+  deltitle:'Видалити',delmsg:'Ваш акаунт буде видалено назавжди.',delyes:'Видалити',delno:'Скасувати',
+  abt:'Ласкаво просимо до KODA\nKODA — це головоломка заснована на мисленні, логіці та постійному виклику.\n\nЯк грати:\nІгрове поле складається з сітки 6×5.\nВаше завдання — вгадати правильне число за доступні спроби.\nЗ кожною спробою ви отримуєте підказки що допомагають наблизитися до правильної відповіді.\n\nВиклик:\n▪ Потрібно думати і аналізувати щоб знайти правильну відповідь.\n▪ Кожна спроба наближає до рішення або змушує переглянути стратегію.\n▪ Перемога залежить від інтелекту та спостережливості.\n\nРозробка:\nKODA TEAM\nРозроблено: ZIAD ELSAYED DS'
+},
+si:{d:'ltr',n:'සිංහල',f:'🇱🇰',sub:'KODA',username:'පරිශීලක නාමය',password:'මුරපදය',login:'පිවිසෙන්න',register:'ගිණුමක් සාදන්න',
+  lv:'මට්ටම',hint:'ටයිප් කිරීමට ස්පර්ශ කරන්න',btn:'තහවුරු',ok:'නිවැරදි',near:'ස්ථානය වැරදි',no:'නොමැත',
+  win:'විශිෂ්ටයි!',winM:'මට්ටම {n}',winB:'මට්ටම {n}',los:'පරාජය!',losM:'පිළිතුර: {a}\nමට්ටම {n}',losB:'මට්ටම {n}',
+  nmO:'0-9 පමණි ✋',short:'කෙටිය!',u5t:'අගුළු හරින ලදී! 🔓',u5m:'මට්ටම 500!',u5b:'ඉදිරියට ⚡',
+  play:'ක්‍රීඩා',lang:'භාෂාව',settings:'සැකසීම්',exit:'ඉවත්',
+  back:'ආපසු',stitle:'සැකසීම්',sfx:'ශබ්ද',sfxsub:'ක්‍රීඩා ශබ්ද',music:'පසුබිම් ශබ්දය',musicsub:'කාර්මිත ස්වර — හලාල්',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'තේමාව',about:'KODA ගැන',logout:'වරෙන්තු',delacc:'ගිණුම මකන්න',wel:'සාදරයෙන් පිළිගනිමු',
+  deltitle:'මකන්න',delmsg:'ඔබේ ගිණුම සදාකාලිකව මකා දැමෙනු ඇත.',delyes:'මකන්න',delno:'අවලංගු',
+  abt:'KODA වෙත සාදරයෙන් පිළිගනිමු\nKODA යනු සිතීම, තර්කනය සහ අඛණ්ඩ අභියෝගය මත පදනම් වූ ප්‍රහේලිකා ක්‍රීඩාවකි.\n\nක්‍රීඩා කරන ආකාරය:\nක්‍රීඩා පුවරුව 6×5 ජාලයකින් සමන්විත වේ.\nලබා ගත හැකි උත්සාහයන් භාවිතා කර නිවැරදි සංඛ්‍යාව අනුමාන කිරීම ඔබේ මෙහෙවරයි.\nසෑම උත්සාහයකදීම නිවැරදි පිළිතුරට ළඟා වීමට ඔබට උපකාර කරන ඉඟි ලැබේ.\n\nඅභියෝගය:\n▪ නිවැරදි පිළිතුර සොයා ගැනීමට සිතීම හා විශ්ලේෂණය කළ යුතුය.\n▪ සෑම උත්සාහයක්ම ඔබව විසඳුමට ළඟා කරවයි.\n▪ ජය ගැනීම බුද්ධිය හා තීව්‍ර නිරීක්ෂණය මත රඳා පවතී.\n\nසංවර්ධනය:\nKODA TEAM\nතනා ඇත: ZIAD ELSAYED DS'
+},
+is:{d:'ltr',n:'Íslenska',f:'🇮🇸',sub:'KODA',username:'Notandanafn',password:'Lykilorð',login:'Innskrá',register:'Búa til reikning',
+  lv:'Stig',hint:'Smelltu til að skrifa',btn:'Staðfesta',ok:'Rétt',near:'Röng staða',no:'Ekki til',
+  win:'Frábært!',winM:'Stig {n}',winB:'Stig {n}',los:'Tapaðir!',losM:'Svar: {a}\nStig {n}',losB:'Stig {n}',
+  nmO:'Aðeins 0-9 ✋',short:'Of stutt!',u5t:'Opnað! 🔓',u5m:'Stig 500!',u5b:'Halda áfram ⚡',
+  play:'Spila',lang:'Tungumál',settings:'Stillingar',exit:'Hætta',
+  back:'Til baka',stitle:'Stillingar',sfx:'Hljóð',sfxsub:'Leikjahljóð',music:'Bakgrunnsljóð',musicsub:'Heimsfarar tónar — Halal',musicsubSolar:'Solar tones — Halal',musicsubAurora:'Aurora tones — Halal',musicInfo:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udfb5 Cosmic Tones (Halal)</div><div><b>Type:</b> Real calm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> C major pentatonic \u2014 128Hz natural base (ear-safe)</div><div style=\"margin-top:5px\"><b>Melody:</b> C3\u2192E3\u2192G3\u2192A3\u2192C4\u2192A3\u2192G3\u2192E3\u2192C3 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Earth drone + pad chord + melody + 5th harmony + breathing LFO + shimmer + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter at 700Hz removes all harsh frequencies</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated, no external files. Not 100% certain of religious ruling.</div>",musicInfoSolar:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf1e Solar Tones (Halal)</div><div><b>Type:</b> Warm cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> G major pentatonic \u2014 96Hz natural base (warm, bright)</div><div style=\"margin-top:5px\"><b>Melody:</b> G2\u2192B2\u2192D3\u2192E3\u2192G3\u2192E3\u2192D3\u2192B2\u2192G2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Sun drone (96Hz) + warm pad + bright melody + harmony + breathing LFO + deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 750Hz \u2014 all frequencies ear-safe</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(255,200,100,.07);border-radius:8px;border:1px solid rgba(255,200,100,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",musicInfoAurora:"<div style=\"font-weight:800;margin-bottom:8px;color:var(--ink)\">\ud83c\udf0c Aurora Tones (Halal)</div><div><b>Type:</b> Ethereal cosmic melody \u2014 generated inside the app</div><div style=\"margin-top:5px\"><b>Scale:</b> E minor pentatonic \u2014 82.4Hz natural base (mysterious, calm)</div><div style=\"margin-top:5px\"><b>Melody:</b> E2\u2192G2\u2192A2\u2192B2\u2192E3\u2192B2\u2192A2\u2192G2\u2192E2 (palindrome \u2014 truly infinite)</div><div style=\"margin-top:5px\"><b>Layers:</b> Deep drone (82.4Hz) + ethereal pad + slow melody + high shimmer + breathing LFO + very deep reverb</div><div style=\"margin-top:5px\"><b>Safety:</b> Low-pass filter 650Hz \u2014 extremely gentle</div><div style=\"margin-top:6px;font-size:11px\"><a href=\"https://www.nasa.gov/solar-system/sounds-of-the-solar-system/\" style=\"color:var(--btn);word-break:break-all\">nasa.gov/solar-system/sounds-of-the-solar-system</a></div><div style=\"margin-top:8px;padding:8px;background:rgba(0,220,150,.07);border-radius:8px;border:1px solid rgba(0,220,150,.18);font-size:11px\"><b>Rights:</b> Public Domain \u2014 programmatically generated. Not 100% certain of religious ruling.</div>",theme:'Þema',about:'Um KODA',logout:'Útskrá',delacc:'Eyða reikningi',wel:'Velkominn',
+  deltitle:'Eyða',delmsg:'Reikningurinn þinn verður eytt varanlega.',delyes:'Eyða',delno:'Hætta við',
+  abt:'Velkomin í KODA\nKODA er þrautaleikur byggður á hugsun, rökhugsun og stöðugum áskorunum.\n\nHvernig á að spila:\nLeikborðið samanstendur af 6×5 grind.\nMarkmið þitt er að giska á rétta töluna með þeim tilraunum sem eru tiltækar.\nVið hverja tilraun færðu vísbendingar sem hjálpa þér að komast nær réttu svari.\n\nÁskorunin:\n▪ Þú þarft að hugsa og greina til að finna rétta svarið.\n▪ Sérhver tilraun færir þig nær lausninni eða lætur þig endurskoða stefnu þína.\n▪ Að vinna veltur á greind og skarpri athugun.\n\nÞróun:\nKODA TEAM\nÞróað af ZIAD ELSAYED DS'
+}};
+
+// ══ STATE ══
+var MAX=6,CELLS=5,MAXLVL=1000;
+var lang='en',user=null;
+var level=1,answer='',guesses=[],current=[],state='playing',ovType='win',unl500=false;
+var sfxOn=true,cfmCb=null,abtOpen=false,langModalOpen=false;
+
+function g(id){return document.getElementById(id);}
+function t(k){return(T[lang]&&T[lang][k])||'';}
+function fmt(k,a,b){var s=t(k);if(a!==undefined)s=s.replace('{n}',a);if(b!==undefined)s=s.replace('{a}',b);return s;}
+
+// ══ STORAGE ══
+var _mem={};
+function _s(k,v){_mem[k]=v;try{localStorage.setItem(k,v);}catch(e){}try{sessionStorage.setItem(k,v);}catch(e){}}
+function _l(k){if(_mem[k]!==undefined)return _mem[k];try{var v=localStorage.getItem(k);if(v!==null)return v;}catch(e){}try{var v=sessionStorage.getItem(k);if(v!==null)return v;}catch(e){}return null;}
+function _d(k){delete _mem[k];try{localStorage.removeItem(k);}catch(e){}try{sessionStorage.removeItem(k);}catch(e){}}
+function getAcc(){try{var r=_l('koda_acc');return r?JSON.parse(r):{};}catch(e){return{};}}
+function setAcc(a){_s('koda_acc',JSON.stringify(a));}
+function loadUser(){
+  var acc=getAcc(),d=acc[user]||{};
+  level=d.level||1;lang=d.lang||'en';unl500=d.u5||false;
+  sfxOn=d.sfx!==false;
+  g('tog-sfx').className='tog'+(sfxOn?' on':'');
+  setThStr(d.theme||'t-warm');
+  initMusicSection();
+}
+function saveUser(){
+  if(!user)return;
+  var acc=getAcc();
+  if(!acc[user])acc[user]={password:''};
+  acc[user].level=level;acc[user].lang=lang;acc[user].u5=unl500;
+  acc[user].sfx=sfxOn;acc[user].theme=curTh();
+  setAcc(acc);
+}
+
+// ══ THEME ══
+function curTh(){var c=document.body.className.match(/t-[\w]+/);return c?c[0]:'t-warm';}
+function setThStr(th){
+  var prevTh=curTh();
+  // Stop music if leaving galaxy
+  if(prevTh==='t-galaxy'&&th!=='t-galaxy'){stopGalaxyMusic();}
+  document.body.className=document.body.className.replace(/t-[\w-]+/,'').trim()+' '+th;
+  document.querySelectorAll('.tdot').forEach(function(d){d.classList.toggle('on',d.dataset.t===th);});
+  initSpaceCanvas();
+  initMusicSection();
+}
+
+function setTh(el){setThStr(el.dataset.t);saveUser();sfxClick();}
+
+// ══ SPACE / GALAXY CANVAS ══
+var spaceAnim=null;
+function initSpaceCanvas(){
+  var cv=g('space-canvas');
+  var th=curTh();
+  if(spaceAnim){cancelAnimationFrame(spaceAnim);spaceAnim=null;}
+  // Stop all videos
+  ['bh-video'].forEach(function(id){
+    var v=g(id);if(v){v.pause();v.style.display='none';v.style.opacity='0';}
+  });
+  cv.style.display='none';
+  if(th==='t-galaxy'){
+    var vid=g('bh-video');
+    if(vid){
+      if(navigator.onLine){
+        vid.style.display='block';vid.load();
+        vid.play().then(function(){vid.style.opacity='1';}).catch(function(){
+          cv.style.display='block';cv.width=window.innerWidth;cv.height=window.innerHeight;
+          runGalaxy(cv.getContext('2d'),cv);
+        });
+      } else {
+        showOfflineToast();
+        cv.style.display='block';cv.width=window.innerWidth;cv.height=window.innerHeight;
+        runGalaxy(cv.getContext('2d'),cv);
+      }
+    }
+  }
+}
+
+function showOfflineToast(){
+  var t2=g('offline-toast');
+  if(!t2)return;
+  t2.style.display='block';
+  clearTimeout(offlineToastTmr);
+  offlineToastTmr=setTimeout(function(){t2.style.display='none';},3000);
+}
+function runStars(ctx,cv){
+  var W=cv.width,H=cv.height;
+  // Stellar classification colors (real B-V color index)
+  var starTypes=[
+    {h:220,s:60,l:95,prob:.18}, // O/B blue-white hot giants
+    {h:200,s:40,l:97,prob:.22}, // A white stars
+    {h:50, s:70,l:95,prob:.28}, // F/G yellow-white (sun-like)
+    {h:35, s:80,l:85,prob:.18}, // K orange
+    {h:10, s:75,l:70,prob:.10}, // M red dwarf
+    {h:0,  s:0, l:100,prob:.04} // bright white (supergiant)
+  ];
+  var stars=[];
+  for(var i=0;i<380;i++){
+    var rnd=Math.random(),acc2=0,type=starTypes[0];
+    for(var k=0;k<starTypes.length;k++){acc2+=starTypes[k].prob;if(rnd<acc2){type=starTypes[k];break;}}
+    var sz=Math.random();
+    // Size distribution: most tiny, few large
+    var r=sz<.65 ? Math.random()*.55+.15
+         :sz<.88 ? Math.random()*.5+.65
+         :sz<.97 ? Math.random()*.4+1.1
+         :         Math.random()*.3+1.5;
+    // Twinkle: slower for dim stars, faster for bright
+    var ts=Math.random()*.012+.002+(r>1?.005:0);
+    // Drift: slow downward parallax, larger stars drift faster (depth illusion)
+    var vy=r>1.2?Math.random()*.12+.04:r>.7?Math.random()*.07+.02:Math.random()*.035+.008;
+    stars.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:r, type:type,
+      ts:ts, to:Math.random()*Math.PI*2,
+      ba:r>1.3?.92:r>.8?.7:.4+Math.random()*.35,
+      phase:Math.random()*Math.PI*2,
+      hasglow:r>1.0,
+      vy:vy
+    });
+  }
+  // Subtle nebula wisps
+  var nebulae=[
+    {x:W*.15,y:H*.25,rx:W*.18,ry:H*.12,h:210,a:.018},
+    {x:W*.78,y:H*.65,rx:W*.15,ry:H*.1,h:240,a:.015},
+    {x:W*.5, y:H*.08,rx:W*.22,ry:H*.07,h:180,a:.012},
+    {x:W*.9, y:H*.35,rx:W*.1, ry:H*.14,h:270,a:.01}
+  ];
+  function frame(){
+    spaceAnim=requestAnimationFrame(frame);
+    ctx.clearRect(0,0,W,H);
+    // Nebulae
+    nebulae.forEach(function(n){
+      var grd=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,Math.max(n.rx,n.ry));
+      grd.addColorStop(0,'hsla('+n.h+',55%,45%,'+n.a+')');
+      grd.addColorStop(.5,'hsla('+n.h+',40%,35%,'+(n.a*.4)+')');
+      grd.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.save();
+      ctx.scale(n.rx/Math.max(n.rx,n.ry),n.ry/Math.max(n.rx,n.ry));
+      ctx.fillStyle=grd;
+      ctx.fillRect(0,0,W/Math.min(n.rx/Math.max(n.rx,n.ry),1)+1,H/Math.min(n.ry/Math.max(n.rx,n.ry),1)+1);
+      ctx.restore();
+      // simpler fallback
+      var grd2=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.rx);
+      grd2.addColorStop(0,'hsla('+n.h+',55%,45%,'+n.a+')');
+      grd2.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grd2;ctx.fillRect(0,0,W,H);
+    });
+    // Stars
+    stars.forEach(function(s){
+      s.phase+=s.ts;
+      // Drift downward
+      s.y+=s.vy;
+      if(s.y>H+s.r*2){s.y=-s.r*2;s.x=Math.random()*W;}
+      // Twinkling: smooth sine with slight size pulse
+      var tw=Math.sin(s.phase+s.to);
+      var tw2=Math.sin(s.phase*1.3+s.to+1.2); // secondary frequency for realism
+      var alphaMod=tw*.18+tw2*.08;
+      var alpha=Math.max(.05,Math.min(.98,s.ba+alphaMod));
+      var cr=s.r*(1+tw*.06+tw2*.03);
+      var tp=s.type;
+      // Glow halo for brighter stars
+      if(s.hasglow){
+        var glowR=cr*(3.5+Math.abs(tw)*1.5);
+        var grd=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,glowR);
+        grd.addColorStop(0,'hsla('+tp.h+','+tp.s+'%,'+tp.l+'%,'+(alpha*.45)+')');
+        grd.addColorStop(.4,'hsla('+tp.h+','+tp.s+'%,'+tp.l+'%,'+(alpha*.15)+')');
+        grd.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=grd;
+        ctx.fillRect(s.x-glowR,s.y-glowR,glowR*2,glowR*2);
+      }
+      // Star core
+      ctx.beginPath();ctx.arc(s.x,s.y,Math.max(.15,cr),0,Math.PI*2);
+      ctx.fillStyle='hsla('+tp.h+','+tp.s+'%,'+tp.l+'%,'+alpha+')';
+      ctx.fill();
+    });
+  }
+  frame();
+}
+function runGalaxy(ctx,cv){
+  var W=cv.width,H=cv.height;
+
+  // ── BLACK HOLE PARAMETERS ──
+  // EH = 40% of screen width, positioned left-center
+  var bhR=W*0.20;          // event horizon radius = 40% width / 2
+  var bhx=W*0.38;          // center X: left half
+  var bhy=H*0.30;          // center Y: upper third (disk extends down)
+
+  // Disk parameters
+  var diskInner=bhR*1.05;  // ISCO (innermost stable circular orbit)
+  var diskOuter=bhR*4.2;   // outer disk edge
+
+  // ── BACKGROUND STARS (lensed) ──
+  var bgStars=[];
+  for(var i=0;i<240;i++){
+    var angle=Math.random()*Math.PI*2;
+    var dist=Math.random()*Math.max(W,H)*.7+bhR*1.5;
+    bgStars.push({
+      x:bhx+Math.cos(angle)*dist*(0.7+Math.random()*.6),
+      y:bhy+Math.sin(angle)*dist*(0.5+Math.random()*.5),
+      r:Math.random()*.8+.15,
+      a:Math.random()*.55+.1,
+      phase:Math.random()*Math.PI*2,
+      ts:Math.random()*.005+.001
+    });
+  }
+
+  // ── ACCRETION DISK PARTICLES ──
+  // Build particles sorted by angle so we can do front/back rendering
+  var N=2000;
+  var parts=[];
+  for(var i=0;i<N;i++){
+    var frac=Math.pow(Math.random(),0.6); // bias toward inner bright region
+    var orb=diskInner+frac*(diskOuter-diskInner);
+    var angle=Math.random()*Math.PI*2;
+    // Keplerian angular velocity: omega ~ r^(-3/2)
+    var omega=(0.0025+0.008*(1-frac));
+    // Color: physics-based temperature gradient
+    // Inner: ~10^7 K = blue-white, outer: ~10^4 K = orange-red
+    var h,s,l,a;
+    if(frac<0.06){      h=195;s=25;l=97; a=.75+Math.random()*.2;}  // blue-white (hottest)
+    else if(frac<0.15){ h=50; s=15;l=98; a=.7+Math.random()*.2;}   // pure white
+    else if(frac<0.28){ h=42; s=80;l=92; a=.65+Math.random()*.2;}  // warm white-yellow
+    else if(frac<0.45){ h=32; s=92;l=75; a=.55+Math.random()*.2;}  // golden orange
+    else if(frac<0.65){ h=20; s=95;l=58; a=.4+Math.random()*.2;}   // orange
+    else if(frac<0.82){ h=10; s=90;l=42; a=.28+Math.random()*.18;} // deep orange
+    else{               h=4;  s=80;l=28; a=.12+Math.random()*.12;} // dark red edge
+    var sz=frac<0.1?Math.random()*.6+.2:frac<0.3?Math.random()*.9+.2:Math.random()*.6+.15;
+    parts.push({orb:orb,angle:angle,omega:omega,h:h,s:s,l:l,a:a,sz:sz,frac:frac});
+  }
+
+  // Sort by orbital radius for depth rendering
+  parts.sort(function(a,b){return a.orb-b.orb;});
+
+  var time=0;
+
+  function drawStars(){
+    bgStars.forEach(function(s){
+      s.phase+=s.ts;
+      var tw=Math.sin(s.phase);
+      // Gravitational lensing distortion
+      var dx=s.x-bhx, dy=s.y-bhy;
+      var d2=dx*dx+dy*dy;
+      var bhR2=bhR*bhR;
+      var lensR=bhR2*8;
+      var sx=s.x, sy=s.y;
+      if(d2<lensR*4){
+        // Schwarzschild lensing approximation
+        var d=Math.sqrt(d2);
+        var deflect=bhR2*3.0/(d2);
+        var bend=Math.min(deflect,0.85);
+        sx=s.x-(dx*bend);
+        sy=s.y-(dy*bend*0.7);
+      }
+      var distFade=Math.min(1,Math.sqrt(d2)/(bhR*6));
+      var alpha=s.a*distFade*(0.85+tw*.12);
+      if(alpha<0.03)return;
+      ctx.beginPath();ctx.arc(sx,sy,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(215,228,255,'+alpha+')';ctx.fill();
+    });
+  }
+
+  function drawDisk(frontHalf){
+    // Disk is edge-on (like Interstellar): very flat ellipse
+    // frontHalf=true draws particles where sin(angle)<0 (front, over shadow)
+    // frontHalf=false draws particles where sin(angle)>0 (behind shadow)
+    var flatness=0.18; // how flat the disk looks (edge-on)
+
+    parts.forEach(function(p){
+      // Update angle
+      p.angle=(p.angle+p.omega)%(Math.PI*2);
+
+      var sa=Math.sin(p.angle);
+      var isFront=sa<0; // front half = top of orbit on screen
+      if(frontHalf!==isFront)return;
+
+      var ca=Math.cos(p.angle);
+      // Project to screen
+      var sx=bhx+ca*p.orb;
+      var sy=bhy+sa*p.orb*flatness;
+
+      // ── RELATIVISTIC DOPPLER BEAMING ──
+      // Left side (ca<0): approaching = MUCH brighter (beaming factor)
+      // Right side (ca>0): receding = dimmer
+      var doppler=Math.pow(1.0/(1.0+0.6*ca),3); // relativistic beaming ~4th power
+      doppler=Math.max(0.05,Math.min(3.5,doppler));
+
+      // ── GRAVITATIONAL REDSHIFT ──
+      // Particles closer to EH are redshifted (shift hue toward red)
+      var grav_redshift=1.0-0.4*Math.exp(-p.frac*3);
+      var finalH=p.h*(0.7+0.3*grav_redshift);
+
+      var finalA=Math.min(0.95,p.a*doppler);
+      if(finalA<0.03)return;
+
+      // ── LENSING NEAR EH ──
+      // Particles near the photon sphere get their position warped
+      var dx=sx-bhx,dy=sy-bhy;
+      var d2=dx*dx+dy*dy;
+      if(d2<bhR*bhR*4){
+        var bend=bhR*bhR*2.2/Math.max(d2,bhR*bhR*1.02);
+        sx=bhx+dx*(1+bend*.3);
+        sy=bhy+dy*(1+bend*.15);
+      }
+
+      ctx.beginPath();ctx.arc(sx,sy,p.sz*(0.8+doppler*.12),0,Math.PI*2);
+      ctx.fillStyle='hsla('+finalH+','+p.s+'%,'+p.l+'%,'+finalA+')';
+      ctx.fill();
+    });
+  }
+
+  function drawLensingHalo(){
+    // The signature Interstellar feature:
+    // light from the back of the disk bends OVER the top of the EH
+    // Creating a bright arc/halo above and below
+
+    // Top lensing arc (light bends over top)
+    var steps=400;
+    for(var i=0;i<steps;i++){
+      var t2=i/steps; // 0..1
+      // Arc spans from left to right, peaking above center
+      var angle2=-Math.PI+t2*Math.PI; // -PI to 0 = top semicircle
+      // The lensed image position: Schwarzschild photon orbit
+      var arcR_inner=bhR*1.04; // photon sphere ~1.5 Rs
+      var arcR_outer=bhR*1.28;
+      // Vary with angle to create asymmetric glow (doppler)
+      var ca=Math.cos(angle2);
+      var sa=Math.sin(angle2);
+      // Beaming: left side brighter
+      var beam=Math.pow(1.0/(1.0+0.7*ca),2.5);
+      beam=Math.max(0.05,Math.min(4,beam));
+
+      // Inner photon ring
+      var ax=bhx+ca*arcR_inner*(1+Math.abs(sa)*0.25);
+      var ay=bhy+sa*arcR_inner*0.45;
+      var frac2=Math.abs(ca);
+      var h2=30+frac2*20;
+      var alpha2=Math.min(0.7,0.15*beam*(1-Math.abs(ca)*0.3));
+      var sz2=1.5+beam*1.2;
+      ctx.beginPath();ctx.arc(ax,ay,sz2,0,Math.PI*2);
+      ctx.fillStyle='hsla('+h2+',85%,85%,'+alpha2+')';ctx.fill();
+
+      // Outer smeared ring (gravitational lensing halo)
+      var ax2=bhx+ca*arcR_outer*(1+Math.abs(sa)*0.4);
+      var ay2=bhy+sa*arcR_outer*0.55;
+      var alpha3=Math.min(0.4,0.08*beam);
+      ctx.beginPath();ctx.arc(ax2,ay2,2.5+beam*.8,0,Math.PI*2);
+      ctx.fillStyle='hsla('+(h2+5)+',75%,75%,'+alpha3+')';ctx.fill();
+    }
+
+    // Bottom shadow arc (shadow of front disk falling on back disk)
+    for(var i=0;i<steps*0.6;i++){
+      var t3=i/(steps*0.6);
+      var angle3=t3*Math.PI; // 0 to PI = bottom semicircle
+      var ca3=Math.cos(angle3),sa3=Math.sin(angle3);
+      var beam3=Math.pow(1.0/(1.0+0.5*ca3),2);
+      beam3=Math.max(0.03,Math.min(2.5,beam3));
+      var ax3=bhx+ca3*bhR*1.06*(1+sa3*.15);
+      var ay3=bhy+sa3*bhR*0.38;
+      var alpha4=Math.min(0.25,0.05*beam3);
+      ctx.beginPath();ctx.arc(ax3,ay3,1.2+beam3*.5,0,Math.PI*2);
+      ctx.fillStyle='hsla(28,80%,70%,'+alpha4+')';ctx.fill();
+    }
+  }
+
+  function drawCoronaAndGlow(){
+    // Outer corona glow
+    var cg=ctx.createRadialGradient(bhx,bhy,bhR*.85,bhx,bhy,bhR*6);
+    cg.addColorStop(0,'rgba(255,160,40,.10)');
+    cg.addColorStop(0.15,'rgba(220,100,20,.055)');
+    cg.addColorStop(0.4,'rgba(150,50,10,.025)');
+    cg.addColorStop(0.7,'rgba(80,20,5,.01)');
+    cg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=cg;ctx.fillRect(0,0,W,H);
+
+    // Hot inner corona (very close to EH, blue-white)
+    var ic=ctx.createRadialGradient(bhx,bhy,bhR*.96,bhx,bhy,bhR*1.5);
+    ic.addColorStop(0,'rgba(220,240,255,.08)');
+    ic.addColorStop(0.5,'rgba(200,200,255,.03)');
+    ic.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=ic;ctx.fillRect(0,0,W,H);
+  }
+
+  function drawEventHorizon(){
+    // Pure black circle — the EH
+    ctx.beginPath();ctx.arc(bhx,bhy,bhR,0,Math.PI*2);
+    ctx.fillStyle='#000000';ctx.fill();
+
+    // Photon sphere: extremely thin bright ring at R=1.5Rs
+    ctx.beginPath();ctx.arc(bhx,bhy,bhR*1.025,0,Math.PI*2);
+    ctx.strokeStyle='rgba(255,220,150,.25)';ctx.lineWidth=bhR*.018;ctx.stroke();
+    ctx.beginPath();ctx.arc(bhx,bhy,bhR*1.04,0,Math.PI*2);
+    ctx.strokeStyle='rgba(255,200,100,.12)';ctx.lineWidth=bhR*.012;ctx.stroke();
+  }
+
+  function drawJets(){
+    // Relativistic jets from poles — faint, narrow
+    var jLen=bhR*4;
+    // Top jet
+    var jt=ctx.createLinearGradient(bhx,bhy-bhR*.9,bhx,bhy-jLen);
+    jt.addColorStop(0,'rgba(180,140,255,.22)');
+    jt.addColorStop(0.3,'rgba(140,100,255,.10)');
+    jt.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.strokeStyle=jt;ctx.lineWidth=bhR*.10;
+    ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(bhx,bhy-bhR*.92);ctx.lineTo(bhx,bhy-jLen);ctx.stroke();
+    // Bottom jet (shorter)
+    var jb=ctx.createLinearGradient(bhx,bhy+bhR*.9,bhx,bhy+jLen*.6);
+    jb.addColorStop(0,'rgba(180,140,255,.15)');
+    jb.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.strokeStyle=jb;ctx.lineWidth=bhR*.07;
+    ctx.beginPath();ctx.moveTo(bhx,bhy+bhR*.92);ctx.lineTo(bhx,bhy+jLen*.6);ctx.stroke();
+  }
+
+  function frame(){
+    spaceAnim=requestAnimationFrame(frame);
+    time++;
+    ctx.clearRect(0,0,W,H);
+
+    // ── RENDER ORDER (painter's algorithm) ──
+    // 1. Background stars (lensed)
+    drawStars();
+    // 2. Back half of disk (behind EH)
+    drawDisk(false);
+    // 3. Gravitational lensing halo (over EH top)
+    drawLensingHalo();
+    // 4. Corona glow (behind EH edge)
+    drawCoronaAndGlow();
+    // 5. Event horizon shadow (black circle, covers everything)
+    drawEventHorizon();
+    // 6. Front half of disk (in front of EH)
+    drawDisk(true);
+    // 7. Relativistic jets
+    drawJets();
+  }
+  frame();
+}
+// ── STARS & GALAXY CANVAS ──
+
+
+
+window.addEventListener('resize',function(){
+  var cv=g('space-canvas');cv.width=window.innerWidth;cv.height=window.innerHeight;
+});
+// Keyboard avoid: move pg-game up when keyboard opens
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize',function(){
+    var pg=g('pg-game');
+    if(!pg||!pg.classList.contains('on'))return;
+    var vvH=window.visualViewport.height;
+    var winH=window.innerHeight;
+    var keyboardH=winH-vvH;
+    if(keyboardH>100){
+      // keyboard is open — shift game up
+      pg.style.transform='translateY(-'+(keyboardH*0.5)+'px)';
+      pg.style.transition='transform 0.2s ease';
+    } else {
+      pg.style.transform='';
+    }
+  });
+}
+
+// ══ AUDIO ══
+var actx=null;
+function getCtx(){if(!actx)actx=new(window.AudioContext||window.webkitAudioContext)();return actx;}
+function beep(f,d,v,tp){if(!sfxOn)return;try{var c=getCtx(),o=c.createOscillator(),gn=c.createGain();o.connect(gn);gn.connect(c.destination);o.type=tp||'sine';o.frequency.value=f;gn.gain.setValueAtTime(v||.15,c.currentTime);gn.gain.exponentialRampToValueAtTime(.001,c.currentTime+d);o.start();o.stop(c.currentTime+d);}catch(e){}}
+function sfxTap(){beep(600,.05,.1);}
+function sfxDel(){beep(300,.05,.08,'square');}
+function sfxWin(){beep(600,.1);setTimeout(function(){beep(800,.1);},100);setTimeout(function(){beep(1000,.2);},200);}
+function sfxLose(){beep(300,.15,.15,'sawtooth');setTimeout(function(){beep(200,.2,.15,'sawtooth');},150);}
+function sfxClick(){beep(500,.04,.07);}
+function toggleSFX(){sfxOn=!sfxOn;g('tog-sfx').className='tog'+(sfxOn?' on':'');saveUser();if(sfxOn)sfxClick();}
+
+// ── GALAXY COSMIC SOUND (Web Audio API — no external files) ──
+var musicOn=false, musicInfoOpen=false;
+var bhAudioCtx=null, bhNodes=[], bhGain=null;
+
+function getThemeMusic(){return curTh();}
+
+function createCosmicSound(){
+  var th=getThemeMusic();
+  // default: galaxy sound
+  createGalaxySound();
+}
+
+// ── SOLAR MUSIC: warm, bright, spacious — G major pentatonic ──
+// G2=96, B2=120, D3=144, E3=160, G3=192, E3=160, D3=144, B2=120, G2=96
+// ── GALAXY MUSIC (renamed from createCosmicSound) ──
+function createGalaxySound(){
+  try{
+    bhAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    var vol=parseFloat(g('volume-slider').value)/100;
+    var now=bhAudioCtx.currentTime;
+    bhGain=bhAudioCtx.createGain();
+    bhGain.gain.setValueAtTime(0,now);
+    bhGain.gain.linearRampToValueAtTime(vol*0.38,now+4);
+    bhGain.connect(bhAudioCtx.destination);
+    var lpf=bhAudioCtx.createBiquadFilter();
+    lpf.type='lowpass';lpf.frequency.value=700;lpf.Q.value=0.4;
+    lpf.connect(bhGain);
+    var rv1=bhAudioCtx.createDelay(5);rv1.delayTime.value=2.1;
+    var rv2=bhAudioCtx.createDelay(5);rv2.delayTime.value=3.4;
+    var rvFb=bhAudioCtx.createGain();rvFb.gain.value=0.20;
+    var rvOut=bhAudioCtx.createGain();rvOut.gain.value=0.16;
+    rv1.connect(rvFb);rv2.connect(rvFb);
+    rvFb.connect(rv1);rvFb.connect(rv2);
+    rv1.connect(rvOut);rv2.connect(rvOut);
+    rvOut.connect(bhGain);
+    bhNodes.push(rv1,rv2,rvFb,rvOut,lpf);
+    [128,64,256].forEach(function(f,i){
+      var o=bhAudioCtx.createOscillator(),g2=bhAudioCtx.createGain();
+      o.type='sine';o.frequency.value=f;g2.gain.value=[0.28,0.14,0.06][i];
+      o.connect(g2);g2.connect(lpf);o.start(now);bhNodes.push(o,g2);
+    });
+    [128,160,192,213.3,256].forEach(function(f,i){
+      var o=bhAudioCtx.createOscillator(),g2=bhAudioCtx.createGain();
+      o.type='sine';o.frequency.value=f*(1+(i%2===0?0.0007:-0.0005));
+      g2.gain.setValueAtTime(0,now);
+      g2.gain.linearRampToValueAtTime(0.038/(i*0.5+1),now+6+i*0.8);
+      o.connect(g2);g2.connect(rv1);g2.connect(lpf);
+      o.start(now);bhNodes.push(o,g2);
+    });
+    var melSeq=[128,160,192,213.3,256,213.3,192,160,128];
+    var hSeq=  [192,240,288,320, 384,320, 288,240,192];
+    var mDur=7.0,mFade=2.5,mIdx=0,hIdx=0,mNext=now+2.5,hNext=now+2.5;
+    function schedMH(){
+      while(mNext<bhAudioCtx.currentTime+5){
+        [
+          {seq:melSeq,idx:mIdx,next:mNext,gv:0.044},
+          {seq:hSeq,  idx:hIdx,next:hNext,gv:0.016}
+        ].forEach(function(s,si){
+          var fr=s.seq[s.idx%s.seq.length];
+          var o=bhAudioCtx.createOscillator(),g2=bhAudioCtx.createGain();
+          o.type='sine';o.frequency.value=fr;
+          g2.gain.setValueAtTime(0,s.next);
+          g2.gain.linearRampToValueAtTime(s.gv,s.next+mFade);
+          g2.gain.setValueAtTime(s.gv,s.next+mDur-mFade);
+          g2.gain.linearRampToValueAtTime(0,s.next+mDur);
+          o.connect(g2);g2.connect(rv1);g2.connect(rv2);g2.connect(lpf);
+          o.start(s.next);o.stop(s.next+mDur+0.1);
+        });
+        mIdx++;hIdx++;mNext+=mDur-mFade;hNext+=mDur-mFade;
+      }
+    }
+    schedMH();
+    var mTmr=setInterval(function(){if(!bhAudioCtx||bhAudioCtx.state==='closed'){clearInterval(mTmr);return;}schedMH();},1500);
+    bhNodes.push({stop:function(){clearInterval(mTmr);}});
+    var lfo=bhAudioCtx.createOscillator(),lfoG=bhAudioCtx.createGain();
+    lfo.type='sine';lfo.frequency.value=0.052;lfoG.gain.value=0.05;
+    lfo.connect(lfoG);lfoG.connect(bhGain.gain);lfo.start(now);bhNodes.push(lfo,lfoG);
+    var sh=bhAudioCtx.createOscillator(),shG=bhAudioCtx.createGain();
+    var shL=bhAudioCtx.createOscillator(),shLG=bhAudioCtx.createGain();
+    sh.type='sine';sh.frequency.value=256;shL.type='sine';shL.frequency.value=0.013;
+    shLG.gain.value=0.010;shG.gain.value=0;
+    shL.connect(shLG);shLG.connect(shG.gain);
+    sh.connect(shG);shG.connect(lpf);
+    sh.start(now);shL.start(now);bhNodes.push(sh,shG,shL,shLG);
+  }catch(e){console.log(e);musicOn=false;g('tog-music').className='tog';}
+}
+function destroyCosmicSound(){
+  bhNodes.forEach(function(n){try{n.stop?n.stop():n.disconnect();}catch(e){}});
+  bhNodes=[];
+  if(bhAudioCtx){try{bhAudioCtx.close();}catch(e){}bhAudioCtx=null;}
+  bhGain=null;
+}
+
+function initMusicSection(){
+  var sec=g('music-sec');
+  if(sec)sec.style.display=curTh()==='t-galaxy'?'block':'none';
+}
+
+function toggleMusic(){
+  musicOn=!musicOn;
+  g('tog-music').className='tog'+(musicOn?' on':'');
+  var volRow=g('volume-row');
+  if(volRow)volRow.style.display=musicOn?'flex':'none';
+  if(musicOn){
+    createCosmicSound();
+  } else {
+    destroyCosmicSound();
+  }
+  saveUser();
+}
+
+function setMusicVol(val){
+  if(bhGain)bhGain.gain.value=parseFloat(val)/100*0.6;
+}
+
+function toggleMusicInfo(){
+  musicInfoOpen=!musicInfoOpen;
+  var p=g('music-info-panel');
+  if(p)p.style.display=musicInfoOpen?'block':'none';
+  g('music-info-btn').textContent=musicInfoOpen?'close':'info';
+}
+
+function stopGalaxyMusic(){
+  destroyCosmicSound();
+  musicOn=false;
+  var tog=g('tog-music');if(tog)tog.className='tog';
+  var vr=g('volume-row');if(vr)vr.style.display='none';
+}
+
+// ══ PAGES ══
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('on');});
+  g(id).classList.add('on');
+  var mb=g('gmenubtn');
+  if(id==='pg-game'){mb.style.display='flex';}
+  else{mb.style.display='none';}
+  if(id!=='pg-game'){var hi=g('hi');hi.removeAttribute('readonly');hi.blur();hi.setAttribute('readonly','');}
+}
+
+// ══ LANG ══
+function applyLang(){
+  var d=T[lang]?T[lang].d:'ltr';
+  document.documentElement.dir=d;document.documentElement.lang=lang;
+  var sub=T[lang]?T[lang].sub:'KODA';
+  g('sub-login').textContent=sub;
+  g('menu-sub').textContent=sub;
+  g('game-sub').textContent=sub;
+  g('lbl-user').textContent=(t('username')||'Username').toUpperCase();
+  g('lbl-pass').textContent=(t('password')||'Password').toUpperCase();
+  g('lbl-loginbtn').textContent=t('login')||'Login';
+  g('lbl-regbtn').textContent=t('register')||'Create Account';
+  if(user)g('menu-user').textContent=(t('wel')||'Welcome')+', '+user;
+  g('lbl-play').textContent=t('play')||'Play';
+  g('lbl-lang').textContent=t('lang')||'Language';
+  g('lbl-settings').textContent=t('settings')||'Settings';
+  g('lbl-exit').textContent=t('exit')||'Exit';
+  g('lbl-back').textContent=t('back')||'Back';
+  g('lbl-stitle').textContent=t('stitle')||'Settings';
+  g('lbl-sfx').textContent=t('sfx')||'Sound Effects';
+  g('lbl-sfxsub').textContent=t('sfxsub')||'Game sounds';
+  var lm=g('lbl-music');if(lm)lm.textContent=t('music')||'Background Sound';
+  var lms=g('lbl-musicsub');
+  if(lms){
+    var th3=curTh();
+    if(th3==='t-solar')lms.textContent=(t('musicsubSolar')||'Solar tones — Halal');
+    else if(th3==='t-aurora')lms.textContent=(t('musicsubAurora')||'Aurora tones — Halal');
+    else lms.textContent=t('musicsub')||'Cosmic tones — Halal';
+  }
+  var mib=g('music-info-body');
+  if(mib){
+    var th2=curTh();
+    if(th2==='t-solar')mib.innerHTML=t('musicInfoSolar')||t('musicInfo')||'';
+    else if(th2==='t-aurora')mib.innerHTML=t('musicInfoAurora')||t('musicInfo')||'';
+    else mib.innerHTML=t('musicInfo')||'';
+  }
+  g('lbl-theme').textContent=t('theme')||'Theme';
+  g('lbl-about').textContent=t('about')||'About KODA';
+  g('lbl-logout').textContent=t('logout')||'Logout';
+  g('lbl-delacc').textContent=t('delacc')||'Delete Account';
+  g('abt-text').textContent=t('abt')||'';
+  g('lmod-title').textContent=t('lang')||'Language';
+  g('lvllbl').textContent=t('lv')||'Level';
+  g('lvlnum').textContent=level+'/'+(level>=500?MAXLVL:'****');
+  g('leg-ok').textContent=t('ok')||'✓';
+  g('leg-near').textContent=t('near')||'~';
+  g('leg-no').textContent=t('no')||'✗';
+  var pl=state==='playing';
+  g('sbtn').style.display=pl?'flex':'none';
+  g('sbtn-lbl').textContent=t('btn')||'Enter';
+  g('hint').style.display=pl?'block':'none';
+  g('hint').textContent=t('hint')||'Tap to type';
+}
+
+// ══ AUTH ══
+function doLogin(){
+  var u=g('inp-user').value.trim(),p=g('inp-pass').value;
+  g('login-err').textContent='';
+  if(!u){g('login-err').textContent='Username required';return;}
+  if(!p){g('login-err').textContent='Password required';return;}
+  var acc=getAcc();
+  if(!acc[u]){g('login-err').textContent='Account not found';return;}
+  if(acc[u].password!==p){g('login-err').textContent='Wrong password';return;}
+  user=u;_s('koda_cur',u);loadUser();applyLang();showPage('pg-menu');
+}
+function doRegister(){
+  var u=g('reg-user').value.trim(),p=g('reg-pass').value,p2=g('reg-pass2').value;
+  g('reg-err').textContent='';
+  if(!u){g('reg-err').textContent='Username required';return;}
+  if(!p){g('reg-err').textContent='Password required';return;}
+  if(p.length<4){g('reg-err').textContent='Min 4 characters';return;}
+  if(p!==p2){g('reg-err').textContent='Passwords do not match';return;}
+  var acc=getAcc();
+  if(acc[u]){g('reg-err').textContent='Username already taken';return;}
+  acc[u]={password:p,level:1,lang:'en',u5:false,sfx:true,theme:'t-warm'};
+  setAcc(acc);user=u;_s('koda_cur',u);loadUser();applyLang();showPage('pg-menu');
+}
+function confirmExit(){
+  // Exit = go back to previous page (like any normal website)
+  if(window.history.length>1){
+    window.history.back();
+  } else {
+    window.close();
+  }
+}
+function doLogout(){
+  sfxClick();saveUser();user=null;_d('koda_cur');
+  g('inp-user').value='';g('inp-pass').value='';g('login-err').textContent='';
+  applyLang();showPage('pg-login');
+}
+function confirmDelete(){
+  showCfm(t('deltitle')||'Delete',t('delmsg')||'Delete?',t('delyes')||'Delete',t('delno')||'Cancel',function(){
+    var acc=getAcc();delete acc[user];setAcc(acc);
+    user=null;_d('koda_cur');closeCfm();
+    g('inp-user').value='';g('inp-pass').value='';
+    applyLang();showPage('pg-login');
+  });
+}
+
+// ══ SETTINGS ══
+function toggleAbt(){
+  abtOpen=!abtOpen;
+  g('abt-panel').style.display=abtOpen?'block':'none';
+  g('abt-arrow').textContent=abtOpen?'expand_less':'expand_more';
+}
+
+// ══ LANG MODAL ══
+function openLang(){
+  langModalOpen=true;
+  var hi=g('hi');hi.removeAttribute('readonly');hi.blur();hi.setAttribute('readonly','');
+  buildLangGrid();g('lmod').classList.add('on');
+}
+function closeLang(){g('lmod').classList.remove('on');langModalOpen=false;}
+function buildLangGrid(){
+  var gr=g('lgrid');gr.innerHTML='';
+  Object.keys(T).forEach(function(code){
+    var ld=T[code];
+    var btn=document.createElement('button');
+    btn.className='lopt'+(code===lang?' on':'');
+    btn.innerHTML=ld.f+'<br>'+ld.n;
+    btn.onclick=function(){lang=code;saveUser();closeLang();applyLang();sfxClick();};
+    gr.appendChild(btn);
+  });
+}
+
+// ══ CONFIRM ══
+function showCfm(title,msg,yes,no,cb,danger){
+  g('cfmtitle').textContent=title;g('cfmmsg').textContent=msg;
+  g('cfmyes').textContent=yes;g('cfmno').textContent=no;
+  // danger=true: red button (delete), false: primary color (logout etc)
+  g('cfmyes').style.background=danger?'var(--re)':'var(--btn)';
+  g('cfmyes').style.color=danger?'#fff':'var(--bt)';
+  cfmCb=cb;g('cfm').classList.add('on');
+}
+function cfmDo(){if(cfmCb)cfmCb();}
+function closeCfm(){g('cfm').classList.remove('on');cfmCb=null;}
+
+// ══ GAME ══
+function goGame(){sfxClick();showPage('pg-game');applyLang();startLevel();}
+function goMenu(){saveUser();sfxClick();applyLang();showPage('pg-menu');}
+
+var RNDCHARS=['0','1','2','3','4','5','6','7','8','9'];
+function genNum(){
+  if(level>500){var p=RNDCHARS.slice();for(var i=p.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=p[i];p[i]=p[j];p[j]=tmp;}return p.slice(0,CELLS).join('');}
+  return Array.from({length:CELLS},function(){return Math.floor(Math.random()*10);}).join('');
+}
+function evaluate(guess,ans){
+  var res=Array(CELLS).fill('absent');
+  var g2=guess.split(''),a=ans.split('');
+  for(var i=0;i<CELLS;i++)if(g2[i]===a[i]){res[i]='correct';a[i]=null;g2[i]=null;}
+  for(var i=0;i<CELLS;i++){if(!g2[i])continue;var x=a.indexOf(g2[i]);if(x!==-1){res[i]='present';a[x]=null;}}
+  return res;
+}
+function buildGrid(){
+  var gr=g('grid');gr.innerHTML='';
+  for(var r=0;r<MAX;r++){
+    var row=document.createElement('div');row.className='row';row.id='R'+r;
+    for(var c=0;c<CELLS;c++){var el=document.createElement('div');el.className='cell';el.id='C'+r+'_'+c;row.appendChild(el);}
+    gr.appendChild(row);
+  }
+}
+function renderGrid(){
+  for(var r=0;r<guesses.length;r++){
+    var gs=guesses[r],ch=gs.word.split('');
+    for(var c=0;c<CELLS;c++){var el=g('C'+r+'_'+c);if(!el)continue;el.textContent=ch[c]||'';el.className='cell '+gs.states[c];}
+  }
+  if(state==='playing'){
+    var r=guesses.length;
+    for(var c=0;c<CELLS;c++){var el=g('C'+r+'_'+c);if(!el)continue;el.textContent=current[c]||'';el.className='cell'+(current[c]?(c===current.length-1?' filled cur':' filled'):'');}
+  }
+  for(var r=guesses.length+(state==='playing'?1:0);r<MAX;r++)
+    for(var c=0;c<CELLS;c++){var el=g('C'+r+'_'+c);if(el){el.textContent='';el.className='cell';}}
+  g('lvlnum').textContent=level+'/'+(level>=500?MAXLVL:'****');
+  var pl=state==='playing';
+  g('sbtn').style.display=pl?'flex':'none';
+  g('hint').style.display=pl?'block':'none';
+  g('legend').style.display='flex';
+}
+function startLevel(){
+  answer=genNum();guesses=[];current=[];state='playing';
+  g('ov').classList.remove('on');g('toast').style.display='none';
+  buildGrid();renderGrid();applyLang();
+  var hi=g('hi');hi.removeAttribute('readonly');
+  setTimeout(function(){hi.value='';hi.focus();},150);
+}
+function addChar(ch){if(state!=='playing'||current.length>=CELLS)return;sfxTap();current.push(ch);renderGrid();}
+function delChar(){if(state!=='playing'||!current.length)return;sfxDel();current.pop();renderGrid();}
+function submit(){
+  if(state!=='playing')return;
+  if(current.length!==CELLS){
+    var row=g('R'+guesses.length);
+    if(row){row.classList.add('shake');setTimeout(function(){row.classList.remove('shake');},400);}
+    showToast(t('short')||'Too short!');return;
+  }
+  var word=current.join(''),states=evaluate(word,answer),ri=guesses.length;
+  guesses.push({word:word,states:states});current=[];renderGrid();
+  for(var c=0;c<CELLS;c++){(function(cc){setTimeout(function(){var el=g('C'+ri+'_'+cc);if(el){el.style.transform='scale(1.18)';setTimeout(function(){el.style.transform='';},140);}},cc*55);})(c);}
+  setTimeout(function(){
+    var won=states.every(function(s){return s==='correct';});
+    if(won){state='won';renderGrid();var hi=g('hi');hi.removeAttribute('readonly');hi.blur();hi.setAttribute('readonly','');sfxWin();saveUser();showOv('win');}
+    else if(guesses.length>=MAX){state='lost';renderGrid();var hi=g('hi');hi.removeAttribute('readonly');hi.blur();hi.setAttribute('readonly','');sfxLose();showOv('lose');}
+  },CELLS*55+200);
+}
+
+// ══ OVERLAY ══
+function showOv(type){
+  ovType=type;
+  var ic=g('ovicon');
+  if(type==='win'){
+    var nxt=level>=MAXLVL?1:level+1;
+    ic.innerHTML='<span class="ms" style="font-size:52px;color:var(--ye)">star</span>';
+    g('ovtitle').textContent=t('win');g('ovmsg').textContent=fmt('winM',nxt);g('ovbtn').textContent=fmt('winB',nxt);
+  } else if(type==='lose'){
+    ic.innerHTML='<span class="ms" style="font-size:52px;color:var(--re)">close</span>';
+    g('ovtitle').textContent=t('los');g('ovmsg').textContent=fmt('losM',level,answer);g('ovbtn').textContent=fmt('losB',level);
+  } else {
+    ic.innerHTML='<span class="ms" style="font-size:52px;color:var(--gr)">lock_open</span>';
+    g('ovtitle').textContent=t('u5t');g('ovmsg').textContent=t('u5m');g('ovbtn').textContent=t('u5b');
+  }
+  g('ov').classList.add('on');
+}
+function ovNext(){
+  sfxClick();g('ov').classList.remove('on');
+  if(ovType==='win'){if(level>=MAXLVL)level=1;else level++;saveUser();
+    if(level===500&&!unl500){unl500=true;saveUser();startLevel();setTimeout(function(){showOv('u5');},400);return;}}
+  startLevel();
+}
+
+// ══ INPUT ══
+var hi=g('hi');
+hi.setAttribute('readonly','');
+var composing=false;
+function focusIn(){if(state!=='playing'||langModalOpen)return;hi.removeAttribute('readonly');hi.value='';hi.focus();}
+g('grid').addEventListener('click',focusIn);
+g('hint').addEventListener('click',focusIn);
+hi.addEventListener('compositionstart',function(){composing=true;});
+hi.addEventListener('compositionend',function(){composing=false;hi.value='';showToast(t('nmO')||'Digits only ✋');});
+hi.addEventListener('input',function(){
+  if(composing)return;
+  var raw=this.value;this.value='';
+  if(!raw||state!=='playing')return;
+  for(var i=0;i<raw.length;i++){var ch=raw[i];if(/^[0-9]$/.test(ch))addChar(ch);else showToast(t('nmO')||'Digits only ✋');}
+});
+hi.addEventListener('keydown',function(e){
+  if(e.key==='Backspace'){delChar();e.preventDefault();}
+  if(e.key==='Enter'){submit();e.preventDefault();}
+});
+hi.addEventListener('blur',function(){
+  var pg=document.querySelector('.page.on');
+  if(state==='playing'&&!langModalOpen&&pg&&pg.id==='pg-game')
+    setTimeout(function(){
+      var pg2=document.querySelector('.page.on');
+      if(state==='playing'&&!langModalOpen&&pg2&&pg2.id==='pg-game'&&document.activeElement!==hi){
+        hi.removeAttribute('readonly');hi.focus();
+      }
+    },250);
+});
+
+// ══ TOAST ══
+var toastTmr;
+function showToast(msg){var t2=g('toast');t2.textContent=msg;t2.style.display='block';clearTimeout(toastTmr);toastTmr=setTimeout(function(){t2.style.display='none';},2200);}
+
+// ══ INIT ══
+(function(){
+  var saved=_l('koda_cur'),acc=getAcc();
+  if(saved&&acc[saved]){user=saved;loadUser();applyLang();showPage('pg-menu');}
+  else{applyLang();showPage('pg-login');}
+  initSpaceCanvas();
+})();
+</script>
+</body>
+</html>
